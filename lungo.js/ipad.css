@@ -1,0 +1,80 @@
+
+/* IPAD MODO HORIZONTAL */
+
+p
+{
+    width:750px;
+}
+
+div
+{
+    width:750px;
+    padding: 10px;
+}
+
+#div_about
+{
+    align:center;
+    
+    /*width:80%;*/
+    width:450px;
+    padding-left: 140px;
+    
+}
+
+#imgespana
+{
+    width:625px;
+    height:350px;
+}
+
+#imgFirst
+{
+    width:256px;
+    height:256px;
+    
+}
+
+a.button.big{position:relative;height:30px;width:55%;margin-bottom:4px;padding:6px 0;font-size:16px;line-height:31px;}
+
+@media only screen and (orientation:portrait)
+{
+	/* IPAD MODO VERTICAL */
+
+	p
+    {
+        width:490px;
+	}
+    
+    div
+    {
+        width:490px;
+        padding: 10px;
+    }
+
+	a.button.big{position:relative;height:30px;width:60%;margin-bottom:4px;padding:6px 0;font-size:16px;line-height:31px;}
+    
+    
+    #div_about
+    {
+        align:center;
+        width:750px;
+        padding-left: 10px;
+        /*width:80%;*/
+        
+    }
+    
+    #imgespana
+    {
+        width:470px;
+        height:263px;
+    }
+
+    #imgFirst
+    {
+    width:256px;
+    height:256px;
+    
+    }
+
+}
