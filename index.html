@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <title>Calendario Fórmula 1</title>
     <meta name="description" content="Calendario Fórmula 1">
-    <meta name="author" content="Javier Jiménez Villar (@soyjavi)">
+    <meta name="author" content="Koldo Duarte Tristán (@koldomac)">
     <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta http-equiv="cleartype" content="on">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- For iPhone 4 with high-resolution Retina display: -->
@@ -18,66 +18,55 @@
     <link rel="apple-touch-icon-precomposed" href="assets/images/icon.png">
     <link rel="apple-touch-startup-image" href="assets/images/default.png">
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="./lungo.js/lungo-1.0.3.min.css" type="text/css">
-    <link rel="stylesheet" href="./lungo.js/lungo.theme.default.css" type="text/css">
+    <link rel="stylesheet" href="./lungo.js/lungo-1.1.min.css">
+    <link rel="stylesheet" href="./lungo.js/lungo.theme.default.css">
     <link rel="stylesheet" media="only screen and (min-device-width: 481px) and (max-device-width: 1024px)" href="./lungo.js/ipad.css" type="text/css"/>
-
-    <!-- Apaño al problema del scroll -->
-    <script>
-      document.ontouchmove = function(event)
-      {
-        if (document.body.scrollHeight == document.body.clientHeight) event.preventDefault();
-      }
-    </script>
-
 </head>
+
 <body class="app">
     <section id="hello_world">
         <header data-title="Calendario Fórmula 1">
             <a href="#" data-target="aside" data-icon="calendar" class="button onleft"></a>
             <a href="#secInfo" data-target="section" data-icon="info" class="button onright"></a>
         </header>
-        <aside id="aside1">
-            <scroll id="main_scroll">
+
+        <aside id="aside1" class="scrollable">
             <ul>
                 <a href="#art0" data-target="article" data-icon="info" data-title="Calendario Fórmula 1" class="current">Calendario F1</a>
-                <a href="#art1" data-target="article" data-icon="flag" data-title="Gran Premio de Australia">18 de marzo</a>
-                <a href="#art2" data-target="article" data-icon="flag" data-title="Gran Premio de Malasia">25 de marzo</a>
-                <a href="#art3" data-target="article" data-icon="flag" data-title="Gran Premio de China">15 de abril</a>
-                <a href="#art4" data-target="article" data-icon="flag" data-title="Gran Premio de Bahréin">22 de abril</a>
-                <a href="#art5" data-target="article" data-icon="flag" data-title="Gran Premio de España">13 de mayo</a>
-                <a href="#art6" data-target="article" data-icon="flag" data-title="Gran Premio de Mónaco">27 de mayo</a>
-                <a href="#art7" data-target="article" data-icon="flag" data-title="Gran Premio de Canadá">10 de junio</a>
-                <a href="#art8" data-target="article" data-icon="flag" data-title="Gran Premio de Europa">24 de junio</a>
-                <a href="#art9" data-target="article" data-icon="flag" data-title="Gran Premio de Gran Bretaña">8 de julio</a>
-                <a href="#art10" data-target="article" data-icon="flag" data-title="Gran Premio de Alemania">22 de julio</a>
-                <a href="#art11" data-target="article" data-icon="flag" data-title="Gran Premio de Hungría">29 de julio</a>
-                <a href="#art12" data-target="article" data-icon="flag" data-title="Gran Premio de Bélgica">2 de septiembre</a>
-                <a href="#art13" data-target="article" data-icon="flag" data-title="Gran Premio de Italia">9 de septiembre</a>
-                <a href="#art14" data-target="article" data-icon="flag" data-title="Gran Premio de Singapur">23 de septiembre</a>
-                <a href="#art15" data-target="article" data-icon="flag" data-title="Gran Premio de Japón">7 de octubre</a>
-                <a href="#art16" data-target="article" data-icon="flag" data-title="Gran Premio de Corea">14 de octubre</a>
-                <a href="#art17" data-target="article" data-icon="flag" data-title="Gran Premio de India">28 de octubre</a>
-                <a href="#art18" data-target="article" data-icon="flag" data-title="Gran Premio de Abu Dhabi">4 de noviembre</a>
-                <a href="#art19" data-target="article" data-icon="flag" data-title="Gran Premio de EEUU">18 de noviembre</a>
-                <a href="#art20" data-target="article" data-icon="flag" data-title="Gran Premio de Brasil">25 de noviembre</a>
+                <a href="#art1" data-target="article" data-icon="calendar" data-title="Gran Premio de Australia">18 de marzo</a>
+                <a href="#art2" data-target="article" data-icon="calendar" data-title="Gran Premio de Malasia">25 de marzo</a>
+                <a href="#art3" data-target="article" data-icon="calendar" data-title="Gran Premio de China">15 de abril</a>
+                <a href="#art4" data-target="article" data-icon="calendar" data-title="Gran Premio de Bahréin">22 de abril</a>
+                <a href="#art5" data-target="article" data-icon="calendar" data-title="Gran Premio de España">13 de mayo</a>
+                <a href="#art6" data-target="article" data-icon="calendar" data-title="Gran Premio de Mónaco">27 de mayo</a>
+                <a href="#art7" data-target="article" data-icon="calendar" data-title="Gran Premio de Canadá">10 de junio</a>
+                <a href="#art8" data-target="article" data-icon="calendar" data-title="Gran Premio de Europa">24 de junio</a>
+                <a href="#art9" data-target="article" data-icon="calendar" data-title="Gran Premio de Gran Bretaña">8 de julio</a>
+                <a href="#art10" data-target="article" data-icon="calendar" data-title="Gran Premio de Alemania">22 de julio</a>
+                <a href="#art11" data-target="article" data-icon="calendar" data-title="Gran Premio de Hungría">29 de julio</a>
+                <a href="#art12" data-target="article" data-icon="calendar" data-title="Gran Premio de Bélgica">2 de septiembre</a>
+                <a href="#art13" data-target="article" data-icon="calendar" data-title="Gran Premio de Italia">9 de septiembre</a>
+                <a href="#art14" data-target="article" data-icon="calendar" data-title="Gran Premio de Singapur">23 de septiembre</a>
+                <a href="#art15" data-target="article" data-icon="calendar" data-title="Gran Premio de Japón">7 de octubre</a>
+                <a href="#art16" data-target="article" data-icon="calendar" data-title="Gran Premio de Corea">14 de octubre</a>
+                <a href="#art17" data-target="article" data-icon="calendar" data-title="Gran Premio de India">28 de octubre</a>
+                <a href="#art18" data-target="article" data-icon="calendar" data-title="Gran Premio de Abu Dhabi">4 de noviembre</a>
+                <a href="#art19" data-target="article" data-icon="calendar" data-title="Gran Premio de EEUU">18 de noviembre</a>
+                <a href="#art20" data-target="article" data-icon="calendar" data-title="Gran Premio de Brasil">25 de noviembre</a>
             </ul>
-            </scroll>
         </aside>
-        
-        <article id="art0">
-            <scroll id="scroll_art0">
-                <ul>
-                    <p><b>La temporada 2012 comenzará </b>en la pista semiurbana de Albert Park, en Australia, <b>el 18 de marzo</b> y terminará en el circuito de Interlagos de Brasil el 25 de noviembre.
-                    </p>
-                    <div align=center>
+
+        <article id="art0" class="scrollable">
+            <ul>
+                <p><b>La temporada 2012 comenzará </b>en la pista semiurbana de Albert Park, en Australia, <b>el 18 de marzo</b> y terminará en el circuito de Interlagos de Brasil el 25 de noviembre.
+                </p>
+                <div align=center>
                     <img id="imgFirst" src="assets/images/iTunesArt.png"></img>
                 </div>
-                </ul>
-            </scroll>
-        </article>        
-        <article id="art1">
-            <scroll id="scroll1">
+            </ul>
+        </article>
+
+        <article id="art1" class="scrollable">
             <ul>
                 <p>
                 En 1985, el Campeonato del Mundo de F1 llegó a Australia, concretamente al circuito de Adelaida. A pesar de convertirse en la popular carrera que cerraba el campeonato, la comunidad de deportes del motor de Melbourne presionó para trasladar la carrera australiana. Finalmente llegaron a un acuerdo en 1993, pero el contrato con Adelaida no expiraba hasta 1995, por lo que tuvieron tiempo de sobra para prepararla.
@@ -119,114 +108,110 @@
                 Visitar el <a href="http://www.grandprix.au.com" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
                 </p>
             </ul>
-            </scroll>
         </article>
-        <article id="art2">
-            <scroll id="scroll2">
-                <ul>
-                    <p>
-                    Si una cosa resalta por encima de las demás en el Circuito de Sepang, son las condiciones extremas que los pilotos tienen que vivir dentro del cockpit de los monoplazas durante la carrera. Temperaturas altas unidas a una gran humedad, siempre reinante en Kuala Lumpur, hacen que los pilotos tengan que sufrir para terminar la carrera. Los errores de conducción derivados de esto están al orden del día en Malasia. La carrera se pone aún más difícil cuando se mira al cielo y se proyectan lluvias intensas, como sucede frecuentemente.
-                    </p>
-                    <p>
-                    En cuanto al trazado, diseñado por el ‘Señor de los Circuitos’, el ingeniero alemán Hermann Tilke, podemos hablar, en primer lugar, de las dos enormes rectas. Se trata de puntos en los que los monoplazas deben emplearse al máximo y conseguir una velocidad punta importante (en torno a los 320 km/h) si no quieren perder la partida contra los más rápidos. Será además importante la fiabilidad de los motores, que tendrán que ir a fondo mucho tiempo.
-                    </p>
-                    <p>
-                    Pero no todo son rectas. Los 15 giros, milimétricamente estudiados, van acompañados con fuertes frenadas en las que los menos rápidos pero más habilidosos pueden intentar frenar los últimos y ganar una posibilidad de adelantamiento.
-                    </p>
-                    <p>
-                    Sepang es severo con los meumáticos por sus fuertes frenadas y amplia gama de tipos de curvas. Bridgestone lleva para este circuito gomas duras y blandas conocedora de las condiciones del trazado malayo, por lo que no parece que vayamos a presenciar problemas en este aspecto, aunque habrá que vigilarlo.
-                    </p>
-                    <p>
-                    56 vueltas a un circuito de 5.543 metros para completar los 310,408 kilómetros de este Gran Premio de Malasia en el que la lluvia amenaza hacer difícil la ya de por sí complicada labor de los pilotos. El domingo por la mañana veremos quién aguanta más.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/Malasia.jpg"></img>
-                    </div>
-                    <p>
-                    Record de Pole Position: M. Schumacher – 1’33”074 (2004, Ferrari).<br/>
-                    Vuelta rápida: J. Montoya – 1’34”223 (2004, Williams).<br/>
-                    Pole 2011: Sebastian Vettel – 1’34”870 (Red Bull).<br/>
-                    Podio 2011: 1. Sebastian Vettel 2. Jenson Button 3. Nick Heidfeld.
-                    </p>
-                    <p>
-                    <b>Hora española de carrera: 10.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.malasyangp.com.my" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
+
+        <article id="art2" class="scrollable">
+            <ul>
+                <p>
+                Si una cosa resalta por encima de las demás en el Circuito de Sepang, son las condiciones extremas que los pilotos tienen que vivir dentro del cockpit de los monoplazas durante la carrera. Temperaturas altas unidas a una gran humedad, siempre reinante en Kuala Lumpur, hacen que los pilotos tengan que sufrir para terminar la carrera. Los errores de conducción derivados de esto están al orden del día en Malasia. La carrera se pone aún más difícil cuando se mira al cielo y se proyectan lluvias intensas, como sucede frecuentemente.
+                </p>
+                <p>
+                En cuanto al trazado, diseñado por el ‘Señor de los Circuitos’, el ingeniero alemán Hermann Tilke, podemos hablar, en primer lugar, de las dos enormes rectas. Se trata de puntos en los que los monoplazas deben emplearse al máximo y conseguir una velocidad punta importante (en torno a los 320 km/h) si no quieren perder la partida contra los más rápidos. Será además importante la fiabilidad de los motores, que tendrán que ir a fondo mucho tiempo.
+                </p>
+                <p>
+                Pero no todo son rectas. Los 15 giros, milimétricamente estudiados, van acompañados con fuertes frenadas en las que los menos rápidos pero más habilidosos pueden intentar frenar los últimos y ganar una posibilidad de adelantamiento.
+                </p>
+                <p>
+                Sepang es severo con los meumáticos por sus fuertes frenadas y amplia gama de tipos de curvas. Bridgestone lleva para este circuito gomas duras y blandas conocedora de las condiciones del trazado malayo, por lo que no parece que vayamos a presenciar problemas en este aspecto, aunque habrá que vigilarlo.
+                </p>
+                <p>
+                56 vueltas a un circuito de 5.543 metros para completar los 310,408 kilómetros de este Gran Premio de Malasia en el que la lluvia amenaza hacer difícil la ya de por sí complicada labor de los pilotos. El domingo por la mañana veremos quién aguanta más.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/Malasia.jpg"></img>
+                </div>
+                <p>
+                Record de Pole Position: M. Schumacher – 1’33”074 (2004, Ferrari).<br/>
+                Vuelta rápida: J. Montoya – 1’34”223 (2004, Williams).<br/>
+                Pole 2011: Sebastian Vettel – 1’34”870 (Red Bull).<br/>
+                Podio 2011: 1. Sebastian Vettel 2. Jenson Button 3. Nick Heidfeld.
+                </p>
+                <p>
+                <b>Hora española de carrera: 10.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.malasyangp.com.my" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
         </article>
-        <article id="art3">
-            <scroll id="scroll3">
-                <ul>
-                    <p>
-                    El circuito de Shangai es un trazado joven de 5.451 metros diseñado por Hermann Tilke, conocido como el señor de los circuitos al haber participado en el diseño de todos los circuitos para el campeonato de Fórmula 1 de reciente construcción y en la remodelación de la mayoría de los antiguos. Su forma, evoca la figura del carácter chino shang (上), que significa “por encima”, o “ascendente”. Es un circuito moderno equipado con los últimos adelantos tecnológicos, muy seguro para los pilotos y en el que la naturaleza también tiene un hueco reservado, ya que el circuito (que abarca unos 5,3 kilómetros cuadrados) está construido sobre un pantano y tiene integrado el paddock dentro de un bonito lago y un majestuoso jardín. Entre sus adelantos está el de su grada principal, que, preparada para 29.000 personas, permite ver a sus ocupantes el 80% del circuito, toda una maravilla del diseño.
-                    </p>
-                    <p>
-                    Fue inaugurado en el 2004 con un gran premio de Fórmula 1 en el que Rubens Barrichello terminó llevándose la victoria por delante de Button y de Raikkonen. Alonso fue cuarto. Un año después, en 2005, el español tomó nota de lo aprendido en el año anterior en que rozó el podio y consiguió posicionarse por delante de Fisichella y Raikkonen, proclamándose vencedor. En el 2006, el alemán Michael Schumacher consiguió en este circuito su última victoria en la Fórmula 1, por delante de Fernando Alonso que, dos carreras después, terminó proclamándose Campeón del Mundo 2006. En el 2007, Raikkonen venció por delante de Alonso y Massa, mientras que en el 2008 fue Hamilton el que ganó por delante de Massa y Raikkonen. En 2009 se produjo el primer doblete de Red Bull, con victoria de Vettel, por delante de Webber.
-                    </p>
-                    <p>
-                    El circuito de Shanghai cuenta con 16 curvas y dos grandes rectas. La recta de atrás, situada entre las curvas 13 y 14, es la más larga con casi un kilómetro de largo, y en la que los coches sobrepasan, fácilmente, los 320 km/h para terminar haciendo la curva por algo más de 50. Éste es sólo un ejemplo de los muchos cambios de velocidad en este trazado en el que abundan las partes lentas y técnicas que facilitan los adelantamientos, cada vez menos frecuentes en la F1.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/china.jpg"></img>
-                    </div>
-                    <p>
-                    Vuelta rápida: M. Schumacher – 1’32″238 (2004, Ferrari).<br/>
-                    Mejor pole: Sebastian Vettel – 1’33″706 (Red Bull).<br/>
-                    Pole 2011: Sebastian Vettel – 1’33″706 (Red Bull).<br/>
-                    Podio 2011: 1. Lewis Hamilton 2. Sebastian Vettel 3. Mark Webber.
-                    </p>
-                    <p>
-                    <b>Hora española de carrera: 9.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.icsh.sh.cn" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
+
+        <article id="art3" class="scrollable">
+            <ul>
+                <p>
+                El circuito de Shangai es un trazado joven de 5.451 metros diseñado por Hermann Tilke, conocido como el señor de los circuitos al haber participado en el diseño de todos los circuitos para el campeonato de Fórmula 1 de reciente construcción y en la remodelación de la mayoría de los antiguos. Su forma, evoca la figura del carácter chino shang (上), que significa “por encima”, o “ascendente”. Es un circuito moderno equipado con los últimos adelantos tecnológicos, muy seguro para los pilotos y en el que la naturaleza también tiene un hueco reservado, ya que el circuito (que abarca unos 5,3 kilómetros cuadrados) está construido sobre un pantano y tiene integrado el paddock dentro de un bonito lago y un majestuoso jardín. Entre sus adelantos está el de su grada principal, que, preparada para 29.000 personas, permite ver a sus ocupantes el 80% del circuito, toda una maravilla del diseño.
+                </p>
+                <p>
+                Fue inaugurado en el 2004 con un gran premio de Fórmula 1 en el que Rubens Barrichello terminó llevándose la victoria por delante de Button y de Raikkonen. Alonso fue cuarto. Un año después, en 2005, el español tomó nota de lo aprendido en el año anterior en que rozó el podio y consiguió posicionarse por delante de Fisichella y Raikkonen, proclamándose vencedor. En el 2006, el alemán Michael Schumacher consiguió en este circuito su última victoria en la Fórmula 1, por delante de Fernando Alonso que, dos carreras después, terminó proclamándose Campeón del Mundo 2006. En el 2007, Raikkonen venció por delante de Alonso y Massa, mientras que en el 2008 fue Hamilton el que ganó por delante de Massa y Raikkonen. En 2009 se produjo el primer doblete de Red Bull, con victoria de Vettel, por delante de Webber.
+                </p>
+                <p>
+                El circuito de Shanghai cuenta con 16 curvas y dos grandes rectas. La recta de atrás, situada entre las curvas 13 y 14, es la más larga con casi un kilómetro de largo, y en la que los coches sobrepasan, fácilmente, los 320 km/h para terminar haciendo la curva por algo más de 50. Éste es sólo un ejemplo de los muchos cambios de velocidad en este trazado en el que abundan las partes lentas y técnicas que facilitan los adelantamientos, cada vez menos frecuentes en la F1.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/china.jpg"></img>
+                </div>
+                <p>
+                Vuelta rápida: M. Schumacher – 1’32″238 (2004, Ferrari).<br/>
+                Mejor pole: Sebastian Vettel – 1’33″706 (Red Bull).<br/>
+                Pole 2011: Sebastian Vettel – 1’33″706 (Red Bull).<br/>
+                Podio 2011: 1. Lewis Hamilton 2. Sebastian Vettel 3. Mark Webber.
+                </p>
+                <p>
+                <b>Hora española de carrera: 9.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.icsh.sh.cn" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
         </article>
-        <article id="art4">
-            <scroll id="scroll4">
-                <ul>
-                    <p>
-                    El Gran Premio de Bahrein del 2004 fue la primera carrera del Campeonato del Mundo de Fórmula 1 disputada en Oriente Medio, culminando un multimillonario proyecto que comenzó a construírse en el 2002, cuando el Reino de Bahrein firmó un contrato a largo plazo para acoger la carrera. Diseñado por Herman Tilke, está situado en Sakhir, en la mitad del desierto y a 30 km de la capital de la isla, Manama.
-                    </p>
-                    <p>
-                    El circuito cuenta con tres largas rectas, curvas lentas y algún viraje de alta velocidad. Su trazado es muy ancho, lo que unido a sus amplias escapatorias asfaltadas que perdonan muchos errores y permiten arriesgar apurando las fuertes frenadas, hace que se suelan ver buenas carreras aquí. Eso sí, hay que estar atentos al viento que desestabiliza los coches y echa arena sobre la pista.
-                    </p>
-                    <p>
-                    Para la carrera del 2010, el circuito cambió su configuración, añadiendo siete curvas más y aumentando su longitud de 5.412 metros a 6.299. El nuevo tramo, muy revirado, está situado entre las curvas 4 y 5 de la anterior configuración (en la actual, el tramo comprendido entre las curvas 5 y 13). En general, el circuito no es demasiado exigente con los neumáticos por no tener muchas curvas rápidas, aunque es de los más duros con los frenos, mientras que la carga aerodinámica ideal necesita un compromiso entre tener buen agarre en las curvas y no perder demasiada velocidad en las rectas. La capacidad de tracción para salir de los lentos virajes y los frenos, son vitales.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/bahrein.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 6.299 metros.<br/>
-                    Número de vueltas: 49.<br/>
-                    Distancia de carrera: 308,405 km.<br/>
-                    Récord: Michael Schumacher - Ferrari, 1.30.252 en 2004 (configuración del circuito anterior).<br/><br/>
-                    Vencedores del Gran Premio de Bahrein:<br/>
-                    2004: Michael Schumacher (Ferrari).<br/>
-                    2005: Fernando Alonso (Renault).<br/>
-                    2006: Fernando Alonso (Renault).<br/>
-                    2007: Felipe Massa (Ferrari).<br/>
-                    2008: Felipe Massa (Ferrari).<br/>
-                    2009: Jenson Button (Brawn GP).<br/>
-                    2010: Fernando Alonso (Ferrari).
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 13.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.bahraingp.com.bh" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
+
+        <article id="art4" class="scrollable">
+            <ul>
+                <p>
+                El Gran Premio de Bahrein del 2004 fue la primera carrera del Campeonato del Mundo de Fórmula 1 disputada en Oriente Medio, culminando un multimillonario proyecto que comenzó a construírse en el 2002, cuando el Reino de Bahrein firmó un contrato a largo plazo para acoger la carrera. Diseñado por Herman Tilke, está situado en Sakhir, en la mitad del desierto y a 30 km de la capital de la isla, Manama.
+                </p>
+                <p>
+                El circuito cuenta con tres largas rectas, curvas lentas y algún viraje de alta velocidad. Su trazado es muy ancho, lo que unido a sus amplias escapatorias asfaltadas que perdonan muchos errores y permiten arriesgar apurando las fuertes frenadas, hace que se suelan ver buenas carreras aquí. Eso sí, hay que estar atentos al viento que desestabiliza los coches y echa arena sobre la pista.
+                </p>
+                <p>
+                Para la carrera del 2010, el circuito cambió su configuración, añadiendo siete curvas más y aumentando su longitud de 5.412 metros a 6.299. El nuevo tramo, muy revirado, está situado entre las curvas 4 y 5 de la anterior configuración (en la actual, el tramo comprendido entre las curvas 5 y 13). En general, el circuito no es demasiado exigente con los neumáticos por no tener muchas curvas rápidas, aunque es de los más duros con los frenos, mientras que la carga aerodinámica ideal necesita un compromiso entre tener buen agarre en las curvas y no perder demasiada velocidad en las rectas. La capacidad de tracción para salir de los lentos virajes y los frenos, son vitales.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/bahrein.jpg"></img>
+                </div>
+                <p>
+                Longitud: 6.299 metros.<br/>
+                Número de vueltas: 49.<br/>
+                Distancia de carrera: 308,405 km.<br/>
+                Récord: Michael Schumacher - Ferrari, 1.30.252 en 2004 (configuración del circuito anterior).<br/><br/>
+                Vencedores del Gran Premio de Bahrein:<br/>
+                2004: Michael Schumacher (Ferrari).<br/>
+                2005: Fernando Alonso (Renault).<br/>
+                2006: Fernando Alonso (Renault).<br/>
+                2007: Felipe Massa (Ferrari).<br/>
+                2008: Felipe Massa (Ferrari).<br/>
+                2009: Jenson Button (Brawn GP).<br/>
+                2010: Fernando Alonso (Ferrari).
+                </p>
+                <p>
+                    <b>Hora española de carrera: 13.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.bahraingp.com.bh" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
         </article>
-        <article id="art5">
-            <scroll id="scroll5">
+
+        <article id="art5" class="scrollable">
             <ul>
                 <p>
                 Los equipos y pilotos de Fórmula 1 conocen el circuito de Montmeló como la palma de su mano. No sólo han competido aquí todos los años desde su inauguración en 1991, sino que también es un circuito muy empleado para realizar tests. Aún así, no les resulta nada fácil encontrar los mejores reglajes por sus tramos de alta velocidad combinados con un último sector muy lento. Su trazado hace difíciles los adelantamientos, lo que no evita que haya un gran ambiente durante el fin de semana del Gran Premio.
@@ -249,7 +234,6 @@
                 Distancia de carrera: 307,104 km.<br/>
                 Récord: Kimi Raikkonen – Ferrari, 1.21.670 en 2008.<br/>
                 Vencedores del Gran Premio de España en Montmeló:<br/>
-
                 1991, 1992: Nigel Mansell (Williams-Renault).<br/>
                 1993: Alain Prost (Williams-Renault).<br/>
                 1994: Damon Hill (Williams-Renault).<br/>
@@ -269,599 +253,578 @@
                 <p>
                 Visitar el <a href="http://www.circuitcat.com" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
                 </p>
+            </ul>    
+        </article>
+
+        <article id="art6" class="scrollable">
+            <ul>
+                <p>
+                Si hay un circuito reconocible a primera vista, ese es el de Mónaco. Un circuito urbano con una amplia trayectoria en el gran circo de la Fórmula 1 y que contiene míticos giros como la Rascasse o Loews. Puntos de extrema dificultad por los que los pilotos pasarán 78 veces hasta completar los 260 kilómetros de los que cuenta esta prueba. La Fórmula 1 corre en Mónaco desde hace 58 años, aunque desde 1928 hay carreras de otras categorías en las calles de esta ciudad.
+                </p>
+                <p>
+                El circuito de Mónaco es un trazado atípico, con pocas curvas rápidas y en el que las barreras están pegadas a la pista, algo que hace que varios pilotos no terminen la carrera tras irse directamente contra los muros, sin posibilidad de maniobrar en unas inexistentes escapatorias. Una carrera en la que lo que prima es el funcionamiento del coche y su estabilidad más que la potencia y la velocidad; un factor clave será la búsqueda de la adherencia mecánica.
+                </p>
+                <p>
+                El trazado urbano utilizado a diario y las líneas blancas hace que sea muy resbaladizo al comienzo del fin de semana, mejorando según los monoplazas van depositando goma sobre él. Los coches necesitan una configuración especial, con máximo apoyo aerodinámico por lo revirado del circuito, y suspensiones más blandas y unos 5 mm más altas por los baches y los desniveles. La dirección también se modifica, ampliando el ángulo de giro de las ruedas para poder negociar la curva más lenta del Mundial, Loews.
+                </p>
+                <p>
+                Un circuito en el que, además, es prácticamente imposible adelantar en pista. Esto hace que sea decisiva la posición con la que se parte y la estrategia a seguir, pues encontrar tráfico en Mónaco es firmar tu sentencia de muerte.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/monaco.jpg"></img>
+                </div>
+                <p>
+                Mejor vuelta: Michael Schumacher – 1’14”439 (2004, Ferrari).<br/>
+                Record Pole: Sebastian Vettel - 1’13”556 (2011, Red Bull).<br/>
+                Pole 2011: Sebastian Vettel - 1’13”556 (Red Bull).<br/>
+                Podio 2011: 1. Sebastian Vettel 2. Fernando Alonso 3. Jenson Button.<br/>
+                Longitud de la pista: 3,340 km.<br/>
+                Número de vueltas: 78 (260.520 Km).<br/>
+                Número de curvas: 19.
+                </p>
+                <p>
+                    <b>Hora española de carrera: 14.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.formula1monaco.com" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
             </ul>
-            </scroll>        
         </article>
 
-        <article id="art6">
-            <scroll id="scroll6">
-                <ul>
-                    <p>
-                    Si hay un circuito reconocible a primera vista, ese es el de Mónaco. Un circuito urbano con una amplia trayectoria en el gran circo de la Fórmula 1 y que contiene míticos giros como la Rascasse o Loews. Puntos de extrema dificultad por los que los pilotos pasarán 78 veces hasta completar los 260 kilómetros de los que cuenta esta prueba. La Fórmula 1 corre en Mónaco desde hace 58 años, aunque desde 1928 hay carreras de otras categorías en las calles de esta ciudad.
-                    </p>
-                    <p>
-                    El circuito de Mónaco es un trazado atípico, con pocas curvas rápidas y en el que las barreras están pegadas a la pista, algo que hace que varios pilotos no terminen la carrera tras irse directamente contra los muros, sin posibilidad de maniobrar en unas inexistentes escapatorias. Una carrera en la que lo que prima es el funcionamiento del coche y su estabilidad más que la potencia y la velocidad; un factor clave será la búsqueda de la adherencia mecánica.
-                    </p>
-                    <p>
-                    El trazado urbano utilizado a diario y las líneas blancas hace que sea muy resbaladizo al comienzo del fin de semana, mejorando según los monoplazas van depositando goma sobre él. Los coches necesitan una configuración especial, con máximo apoyo aerodinámico por lo revirado del circuito, y suspensiones más blandas y unos 5 mm más altas por los baches y los desniveles. La dirección también se modifica, ampliando el ángulo de giro de las ruedas para poder negociar la curva más lenta del Mundial, Loews.
-                    </p>
-                    <p>
-                    Un circuito en el que, además, es prácticamente imposible adelantar en pista. Esto hace que sea decisiva la posición con la que se parte y la estrategia a seguir, pues encontrar tráfico en Mónaco es firmar tu sentencia de muerte.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/monaco.jpg"></img>
-                    </div>
-                    <p>
-                    Mejor vuelta: Michael Schumacher – 1’14”439 (2004, Ferrari).<br/>
-                    Record Pole: Sebastian Vettel - 1’13”556 (2011, Red Bull).<br/>
-                    Pole 2011: Sebastian Vettel - 1’13”556 (Red Bull).<br/>
-                    Podio 2011: 1. Sebastian Vettel 2. Fernando Alonso 3. Jenson Button.<br/>
-                    Longitud de la pista: 3,340 km.<br/>
-                    Número de vueltas: 78 (260.520 Km).<br/>
-                    Número de curvas: 19.
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 14.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.formula1monaco.com" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art7">
-            <scroll id="scroll7">
-                <ul>
-                    <p>
-                    El circuito en el que se disputa este Gran Premio de Canadá está en Montreal y lleva el nombre del mítico piloto local Gilles Villeneuve. Las instalaciones están situadas en una isla repleta de zonas verdes y que tiene parte del trazado transitable el resto del año. Un circuito técnico, complicado y en el que los accidentes, los safety cars y las banderas amarillas suelen poner emoción a la carrera.
-                    </p>
-                    <p>
-                    Junto a las largas rectas, en Montreal encontramos fuertes frenadas y giros muy técnicos. Las frenadas son de las más duras de todo el año, con seis frenadas superiores a los 250 km/h (cuatro de ellas por encima incluso de los 300), lo que castiga mucho los frenos de los monoplazas, que se desgastan muchísimo. Ante este panorama, la estabilidad y el agarre serán puntos clave, especialmente en la salida de las curvas. Los motores sufren un gran castigo por el tiempo que hay que ir a fondo de manera continua en la recta más larga (14 segundos). En el cómputo global, el uso del motor al máximo no es excesivamente alto (se marcha a fondo el 60% del tiempo).
-                    </p>
-                    <p>
-                    Los neumáticos que se llevan a Canadá son los super-blandos y medios, que no corren demasiado peligro ante la baja carga aerodinámica que tienen los coches allí, aunque pueden sufrir los de los pilotos que no los cuiden en las frenadas y piquen de manera brusca el pedal para detener los monoplazas en los pasos por curva.
-                    </p>
-                    <p>
-                    <u>El muro de los campeones</u><br/>
-                    Emplazado en la entrada a la recta de meta, este muro es uno de esos puntos míticos del Mundial de Fórmula 1 que es, a partes iguales, odiado y amado. El único muro con nombre propio y con el que se la han visto tantos campeones de esta especialidad. Es el final de la chicane con la que se llega a meta y que sirve para pasar de más de 300 km/h a unos 150 con el que los coches salen escupidos hacia un muro por el que los pilotos tienen que pasar a pocos centímetros para apurar hasta el último segundo en cada uno de los giros a este circuito.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/canada.jpg"></img>
-                    </div>
-                    <p>
-                    <u>El accidente de Kubica</u><br/>
-                    Se trata normalmente de carreras accidentadas las que se disputan en Montreal y la del 2007 es uno de los ejemplos más claros. En uno de los grandes premios más movidos de los que se recuerdan sólo acabaron 12 pilotos, el coche de seguridad tuvo que salir tres veces, la diferencia entre el primero y el último clasificado fue de sólo 30 segundos y Robert Kubica sufrió el accidente más grave de todos los que ha tenido en su carrera. En 2008 volvió para lograr su primera victoria en F1.
-                    </p>
-                    <p>
-                    Vuelta rápida: R. Barrichello – 1’13”622 (2004, Ferrari).<br/>
-                    Record Pole: R. Schumacher – 1’12”275 (2004, Williams).<br/>
-                    Pole 2011: S. Vettel – 1’13”014 (Red Bull).<br/>
-                    Podio 2011: 1. Jenson Button 2. Sebastian Vettel 3. Mark Webber.<br/>
-                    Longitud de la pista: 4.361 km.<br/>
-                    Número de vueltas: 70 (305.270 Km).<br/>
-                    Número de curvas: 12 (izquierda:5) (derecha:7).<br/>
-                    Velocidad máxima: 348 Km/h.
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 19.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.circuitgillesvilleneuve.ca" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art8">
-            <scroll id="scroll8">
-                <ul>
-                    <p>
-                    En agosto del 2008 la ciudad de Valencia albergó su primer Gran Premio de F1 en un nuevo circuito urbano situado en el recientemente renovado puerto deportivo Juan Carlos I.
-                    </p>
-                    <p>
-                    El circuito, que se monta y desmonta sobre las avenidas y calles de la ciudad tiene su recta de salida y los boxes en el Tinglado Nº4 del puerto, un edificio de finales del siglo XIX, continuando el trazado por el nuevo barrio de Grao rodeando la dársena pasando por delante de las bases de la America´s Cup, la famosa competición naútica. Después atraviesa el paseo de las palmeras de Foredek, para llegar a la explanada previa a la Marina Norte y atravesar el canal por un puente que se ha convertido en símbolo del circuito.
-                    </p>
-                    <p>
-                    Una vez en el lado sur del puerto, los coches pasan muy cerca del borde del muelle para entrar en Grao y volver a la zona portuaria por la Avenida de Francia. Con 14 metros de anchura el circuito urbano de Valencia fue diseñado con escapatorias para cumplir con las mismas especificaciones de seguridad de los circuitos permanentes.
-                    </p>
-                    <p>
-                    Diseñado por Hermann Tilke, cuenta con nada menos que 25 curvas y por su configuración es similar al circuito canadiense de Gilles Villeneuve, trazado de acelerar-frenar. Destacan sus largas rectas, sobretodo la del segundo sector, las horquillas 17 y 25, y sus chicanes.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/europa.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 5.419 metros.<br/>
-                    Número de vueltas: 57.<br/>
-                    Distancia de carrera: 308,883 km.<br/>
-                    Récord: Timo Glock - Toyota, 1.38.683 en 2009.<br/>
-                    Vencedores del Gran Premio de Europa en el Valencia Street Circuit:<br/>
-                    2008: Felipe Massa (Ferrari).<br/>
-                    2009: Rubens Barrichello (Brawn GP).<br/>
-                    2010: Sebastian Vettel (Red Bull).<br/>
-                    2011: Sebastian Vettel (Red Bull).
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 14.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.valenciastreetcircuit.com" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art9">
-            <scroll id="scroll9">
-                <ul>
-                    <p>
-                    Como muchos otros circuitos de Inglaterra, Silverstone comenzó siendo un aeródromo. Cuando terminó la Segunda Guerra Mundial en 1945, los otros dos circuitos ingleses, Donington Park y Brooklands, quedaron en muy mal estado, por lo que el antiguo aeródromo se convirtió en la sede del Gran Premio de Gran Bretaña en 1948. Rápido y desafiante, en 1949 tomó la forma que sigue siendo la base del actual trazado, y aquí se disputó la primera carrera de la historia de la Fórmula 1, en 1950, Gran Premio que ganó Giuseppe Farina con un Alfa Romeo.
-                    </p>
-                    <p>
-                    A partir de 1955, el Gran Premio de Gran Bretaña comenzó a rotar entre Aintree y Silverstone, para pasar en 1963 a hacerlo entre Silverstone y Brands Hatch. El circuito fue objeto de varias remodelaciones a lo largo de su historia, y en 1987 pasó a ser el único circuito en el que se ha celebrado el Gran Premio hasta ahora, después de que se añadiera una nueva curva antes de Woodcote para reducir las terribles velocidades que se alcanzaban, y de que en 1992 se creara un nuevo complejo de curvas entre Farm y Woodcote. A partir del 2010 el Gran Premio de Gran Bretaña iba a ser acogido por el circuito de Donington Park, pero debido a problemas económicos de los organizadores, el GP permanecerá en Silverstone por 16 años más.
-                    </p>
-                    <p>
-                    Para inciar esta nueva época, en 2010, el circuito estrena una nueva configuración destinada a mejorar el disfrute de los espectadores y hacer de Silverstone un reto aún mayor para los pilotos. Y es que el nuevo complejo de curvas denominado “Arena”, que comienza en la remodelada Abbey (curva 1) para volver al antiguo trazado en Brooklands (curva 6), hace que al contrario de lo que suele suceder, el circuito sea más rápido aún que antes.
-                    </p>
-                    <p>
-                    En 2011 se completa el proyecto de renovación del circuito con el cambio de la posición de la recta de meta, ahora entre la curva Club (18) y Abbey (1), inaugurándose un nuevo paddock y edificio de boxes.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/GB.jpg"></img>
-                    </div>
-                    <p>
-                    Con una gran cantidad de curvas rápidas que exigen una elevada carga aerodinámica, el circuito pone los pelos de punta, sobretodo cuando los pilotos se lanzan en séptima velocidad a la curva 9, Copse, para llegar a 300km/h a Becketts, una secuencia de curvas muy fluída en la que los pilotos casi (o sin casi) no tocan los frenos y en la que la alta velocidad genera un apoyo en el coche que hace que los pilotos sufran tremendas fuerzas G.
-                    </p>
-                    <p>
-                    Longitud: 5.891 metros.<br/>
-                    Número de vueltas: 52.<br/>
-                    Distancia de carrera: 306,227 km.<br/>
-                    Récord: Fernando Alonso - Ferrari, 1.30.874 en 2010.<br/>
-                    Pole 2011: Mark Webber (Red Bull) 1.30.399.<br/>
-                    Podio 2011: 1. Fernando Alonso 2. Sebastian Vettel 3. Mark Webber.
-                    </p>
-                    <p>
-                    <b>Hora española de carrera: 14.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.silverstone.co.uk" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art10">
-            <scroll id="scroll10">
-                <ul>
-                    <p>
-                    El circuito de Hockenheim fue construído en 1939 como circuito de pruebas de alta velocidad de Mercedes-Benz. Cuando estalló la guerra se paralizó su construcción, y en la Alemania de la posguerra Nurburgring se convirtió en la sede de la Fórmula 1, dejando Hockenheim para eventos menos importantes. Cuando se aprobó un plan para construir una autopista a través del circuito, el gobierno indemnizó con una gran suma de dinero, dinero que se empleó para construir el nuevo y ya famoso circuito de Hockenheim.
-                    </p>
-                    <p>
-                    A pesar de que en 1968 Jim Clark falleciera en esta pista en una carrera de F2, la Fórmula 1 llegó a Hockenheim en 1970 debido a que las instalaciones de Nurburgring se estaban quedando obsoletas. Pero Nurburgring fue renovado y la Fómula 1 volvió allí, hasta que en 1976 Niki Lauda sufriera un terrible accidente en el que sufrió graves quemaduras, pasando Hockeinheim a convertirse en la sede del Gran Premio de Alemania a partir de 1977. En 1980 murió Patrick Depailler mientras entrenaba en la pista, por lo que se colocó una chicane para reducir la velocidad en aquella zona (Ostkurve).
-                    </p>
-                    <p>
-                    Desde el debut de Michael Schumacher, el Gran Premio de Alemania en Hockenheim ha sido una de las carreras con más ambiente, con un griterío ensordecedor en la zona del estadio. Para la edición del 2002, el circuito fue rediseñado por Hermann Tilke. Se mantuvo el estadio, pero se acortó el trazado al eliminarse las largas rectas de los bosques, perdiendo algo de su especial carácter, a pesar de lo cual la pista es muy buena para las carreras y ha seguido siendo un escenario habitual del calendario de F1, alternándose actualmente el Gran Premio de Alemania entre esta pista y la de Nurburgring.
-                    </p>
-                    <p>
-                    A pesar de las modificaciones que se le han ido realizando para reducir la velocidad, Hockenheim sigue siendo un circuito muy rápido, por lo que es muy duro para los motores al tener que ir mucho tiempo altos de revoluciones. La puesta a punto resulta complicada por la necesidad de tener una elevada velocidad punta, pero también una buena adherencia en la parte virada y en las frenadas,  con lo que la búsqueda de ese delicado equilibrio es muy importante. La frenada para la horquilla (curva 6) es un buen punto de adelantamiento.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/alemania.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 4.574 metros.<br/>
-                    Número de vueltas: 67.<br/>
-                    Distancia de carrera: 306,458 km.<br/>
-                    Récord: Kimi Raikkonen - McLaren, 1.13.780 en 2004.<br/>
-                    Pole 2010: Sebastian Vettel (Red Bull), 1.13.791.<br/>
-                    Podio 2010: 1. Fernando Alonso 2. Felipe Massa 3. Sebastian Vettel.
-                    </p>
-                    <p>
-                    <b>Hora española de carrera: 14.00.</b>
-                    </p>
-                    Visitar el <a href="http://www.hockenheimring.com" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art11">
-            <scroll id="scroll11">
-                <ul>
-                    <p>
-                    A pesar de que en 1936 se organizó en Hungría un Gran Premio, no fue hasta 50 años después, en 1986,  cuando las autoridades deportivas del país lograron volver a poner a Hungría en el mapa del automovilismo mundial al organizar su primer Gran Premio de Fórmula 1. En un principio se pensó en celebrar el GP por las calles de Budapest, pero finalmente se optó por construir un nuevo circuito en un valle a 20 km de la preciosa ciudad. Hungaroring se comenzó a construir en 1985 y el valle permitía a los espectadores tener unas excelentes vistas del circuito, que vio llegar a la F1 en agosto de 1986. Desde entonces, siempre ha estado en el calendario de la F1, y en varias ocasiones ha ofrecido espectaculares carreras.
-                    </p>
-                    <p>
-                    Lento y revirado, para los pilotos es un circuito divertido para pilotar, pero el asfalto provoca bastante quebraderos de cabeza a pilotos y equipos por dos motivos: Uno, el polvo, debido a que la pista no se usa mucho el resto del año, haciendo que el agarre vaya mejorando según se va limpiando y se acumula la goma tras el paso de los monoplazas. El segundo, es su temperatura, ya que normalmante hace mucho calor, superando habitualmente el asfalto los 50ºC. El calor también lo hace duro físicamente para los pilotos porque la carrera suele ser muy larga, casi en el límite de las dos horas. Al margen de la recta de 700 metros, el resto es una sucesión de curvas de media y baja velocidad, por lo que la configuración de los coches es de máxima carga aerodinámica, similar a la de Mónaco, lo que permite a los pilotos ser agresivos con el coche. El agarre mecánico es muy importante, y los reglajes de la suspensión se ablandan un poco para mejorarlo y para disponer de buena tracción a la salida de las curvas, que obligan al piloto a dosificar continuamente el acelerador. La ausencia de largas rectas, y por lo tanto también de fuertes frenadas, hace que los adelantamientos sean muy complicados. La frenada para la primera curva es la mejor oportunidad, pero el piloto de delante tiene que cometer un error saliendo de la última curva para poder cogerle el rebufo en la recta.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/hungria.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 4.381 metros.<br/>
-                    Número de vueltas: 70.<br/>
-                    Distancia de carrera: 306,630 km.<br/>
-                    Récord: Michael Schumacher - Ferrari, 1.19.071 en 2004.<br/>
-                    Pole 2011: Sebastian Vettel (Red Bull), 1.19.815.<br/>
-                    Podio 2011: 1. Jenson Button 2. Sebastian Vettel 3. Fernando Alonso.
-                    </p>
-                    <p>
-                    <b>Hora española de carrera: 14.00.</b>
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art12">
-            <scroll id="scroll12">
-                <ul>
-                    <p>
-                    Spa-Francorchamps es uno de los circuitos más históricos del calendario de la Fórmula 1. En 1924 ya acogió un Gran Premio, y casi 90 años después sigue siendo el circuito favorito de gran parte de los pilotos y aficionados.
-                    </p>
-                    <p>
-                    El trazado original de Spa consistía en 14,9 kilómetros de estrechas y peligrosas vías públicas, y aunque a través de los años se fue acortando ligeramente su distancia con algunos cambios, cuando en 1970 albergó el último Gran Premio en su vieja configuración, todavía medía más de 14 kilómetros y seguía siendo increíblemente rápido, logrando Chris Amon la vuelta rápida aquel año a una media de 245 km/h.
-                    </p>
-                    <p>
-                    Spa no volvió al calendario de la Fórmula 1 hasta 1983, con una configuración drásticamente revisada al ser su longitud recortada a 7 kilómetros, pero afortunadamente la magia del circuito permaneció intacta. Dos tercios de la vuelta siguen utilizando el trazado antiguo, y la legendaria curva de Eau Rouge, con su brutal desnivel, sigue siendo parte fundamental del mismo.
-                    </p>
-                    <p>
-                    Más de 20 años después, Spa sigue siendo el circuito más largo del calendario. El trazado sigue las ondulaciones naturales de la región de las Ardenas, combinando largas rectas con difíciles curvas rápidas en un bonito entorno forestal. No es de extrañar por tanto que siga siendo uno de los circuitos favoritos de los pilotos.
-                    </p>
-                    <p>
-                    Circuito de baja carga aerodinámica debido a la importancia de tener una buena velocidad en sus largas rectas, tiene en la climatología otra de sus peculiares características. El tiempo es notoriamente variable y dada su longitud, a menudo llueve en unas zonas del circuito mientras que otras están secas.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/spa.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 7.004 metros.<br/>
-                    Número de vueltas: 44.<br/>
-                    Distancia de carrera: 308,052 km.<br/>
-                    Récord: Kimi Raikkonen - McLaren, 1.45.108 en 2004.<br/>
-                    Pole 2011: Sebastian Vettel (Red Bull) – 1′48”298.<br/>
-                    Podio 2011: 1. Sebastian Vettel 2. Mark Webber 3. Jenson Button.
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 14.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.spa-francorchamps.be" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art13">
-            <scroll id="scroll13">
-                <ul>
-                    <p>
-                    El de Monza es un circuito clave en la historia de la Fórmula 1. Ejemplo fantástico de circuito de alta velocidad, los viejos árboles del histórico parque de las afueras de Milán han sido testigos de algunas de las mejores carreras de todos los tiempos, pero también de algunos de los peores accidentes de este deporte. La lista de inolvidables victorias y terribles accidentes es muy larga, y se combinan para hacer del Autodromo Nazionale di Monza uno de los lugares más mágicos del calendario de la Fórmula 1.
-                    </p>
-                    <p>
-                    Se comenzó a construír en 1922, y con un óvalo peraltado incorporado en su diseño su longitud era de nada menos que 10 kilómetros. El trazado sufrió múltiples variaciones, casi siempre en respuesta a trágicos accidentes que sucedieron, hasta que la Segunda Guerra Mundial provocó que se suspendieran los Grandes Premios hasta el año 48. Sin embargo no sería hasta cinco años después de la creación de la Fórmula 1, en 1955, cuando tras una reconstrucción que dejó su longitud en los actuales 5,7 kilómetros, comenzó a acoger la F1. Desde entonces, las modificaciones han sido múltiples, siempre para mejorar la seguridad. Ni falta hace decir que los tifosi italianos apoyando a su Scuderia Ferrari crean un ambiente impresionante.
-                    </p>
-                    <p>
-                    En su configuración actual Monza sigue siendo un circuito rapidísimo, el más rápido del Mundial, y un desafío singular para pilotos y equipos. La velocidad media en una vuelta supera los 250 km/h, y en cuatro puntos diferentes se superan los 330km/h. Precisamente por la longitud de sus rectas, los monoplazas ruedan en el Autodromo con una configuración aerodinámica específica para este circuito, con tan poca carga aerodinámica como sea posible sin comprometer la estabilidad en las frenadas. El agarre se sacrifica para lograr una mayor velocidad en recta, y con tan poca carga, incluso los pilotos notan que el monoplaza acelera más que de costumbre.<br/>
-                    Las largas rectas hacen que los motores estén sometidos a grandes esfuerzos debido a que más del 75% de la vuelta se recorre con el acelerador a fondo, y los frenos también tienen un enorme trabajo para detener el coche en las fortísimas frenadas. Otro punto importante son las suspensiones, ya que pasar por encima de los pianos en las chicanes y acelerar lo antes posible es importante a la hora de marcar un buen crono.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/italia.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 5.793 metros.<br/>
-                    Número de vueltas: 53.<br/>
-                    Distancia de carrera: 306,720 km.<br/>
-                    Récord: Rubens Barrichello - Ferrari, 1.21.046 en 2004.<br/>
-                    Pole 2011: Sebastian Vettel (Red Bull) – 1′22”275.<br/>
-                    Podio 2011: 1. Sebastian Vettel 2. Jenson Button 3. Fernando Alonso.
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 14.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.monzanet.it" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art14">
-            <scroll id="scroll14">
-                <ul>
-                    <p>
-                    En 2008 Singapur tuvo el honor de acoger el primer Gran Premio nocturno de la historia de la Fórmula 1. Esta particularidad, junto con su trazado urbano con el horizonte de la ciudad como telón de fondo han creado un GP espectacular y de gran ambiente, que además por su horario puede ser retransmitido a una hora apropiada para las audiencias de las televisiones europeas. Utilizando vías públicas alrededor de la zona de Marina Bay, el circuito utiliza potentes sistemas de iluminación para garantizar la seguridad.
-                    </p>
-                    <p>
-                    El GP en este trazado que gira en sentido contrario a las agujas del reloj es uno de los más duros por su duración (casi agota el límite de dos horas), calor, humedad y una constante sucesión de curvas lentas de segunda o tercera velocidad, lo que también hace que el motor esté entregando toda su potencia durante menos de la mitad de la vuelta. Si para el motor es el circuito menos duro, no lo es así para los frenos, que no tienen apenas descanso entre curva y curva.
-                    </p>
-                    <p>
-                    Los reglajes para este circuito urbano son parecidos a los de Mónaco, con mucha carga aerodinámica, y el agarre mecánico tiene gran importancia para traccionar en la salida de las curvas, por lo que las suspensiones tienden a ser más blandas.
-                    </p>
-                    <p>
-                    La meteorología también juega un importante papel en la zona, porque el calor se combina con frecuentes tormentas al anochecer.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/singapur.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 5.073 metros.<br/>
-                    Número de vueltas: 61.<br/>
-                    Distancia de carrera: 309,316 km.<br/>
-                    Carga aerodinámica: Alta.<br/>
-                    Porcentaje de tiempo con el acelerado a fondo: 43% (bajo).<br/>
-                    Porcentaje de tiempo frenando: 21%.<br/>
-                    Desgaste de frenos: Muy alto.<br/>
-                    Combustible necesario para el GP: 165 kilos (muy alto).<br/>
-                    Consumo de combustible por vuelta: 2,5 kilos (medio/alto).<br/>
-                    Pérdida de tiempo por vuelta por cada 10kg de combustible a bordo: 0,35 segundos (alto).<br/>                    
-                    Récord: Kimi Raikkonen - Ferrari, 1.45.599 en 2008.<br/>
-                    Ganadores del Gran Premio de Singapur en Marina Bay:<br/>
-                    2008: Fernando Alonso (Renault).<br/>
-                    2009: Lewis Hamilton (McLaren).<br/>
-                    2010: Fernando Alonso (Ferrari).<br/>
-                    2011: Sebastian Vettel (Red Bull).
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 14.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.singaporegp.sg" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-        </scroll>
-        </article>
-        <article id="art15">
-            <scroll id="scroll15">
-                <ul>
-                    <p>
-                    Suzuka es uno de los mejores circuitos de la Fórmula 1 actual. Construido por Honda en 1962 como circuito de pruebas, tiene como característica única en la actual F1 su forma de “ocho”, y su exigente trazado es una excelente prueba para comprobar la competitividad de un F1 y la habilidad de los pilotos. La pista también tiene un enorme parque temático que incluye una famosa noria.
-                    </p>
-                    <p>
-                    En 1976 se disputó el primer Gran Premio de Japón, pero lo hizo en el circuito de Fuji, propiedad de Toyota. Tras disputarse allí en 1976 y 1977, pasaron diez años hasta que en 1987, después de adaptarlo a las exigencias sobre seguridad, Suzuka acogiera su primer Gran Premio de F1. Desde entonces, la prueba se ha mantenido en el calendario hasta ahora, a excepción del 2007 y 2008, cuando se volvió a disputar en Fuji.
-                    </p>
-                    <p>
-                    Tradicionalmente la de Suzuka ha sido de las últimas carreras del calendario, lo que ha hecho que aquí se hayan decidido muchos títulos, con momentos inolvidables como el accidente entre Alain Prost y Ayrton Senna en la chicane.
-                    </p>
-                    <p>
-                    Junto con Spa-Francorchamps, Suzuka es uno de los circuitos favoritos de los pilotos. Tremendamente técnico y difícil, en él los buenos pilotos suelen marcar diferencias. Con sus desniveles tiene cierto parecido con el de Spa, pero la gran cantidad de curvas exige más carga aerodinámica que el trazado belga. Las curvas rápidas son mayoría y muchas son enlazadas, por lo que es muy importante que el coche reaccione bien en los cambios de dirección. Los pilotos también tienen que ser muy precisos en sus trazadas ya que un error en una curva les penaliza en las siguientes.
-                    </p>
-                    <p>
-                    Lograr un buen equilibrio en la puesta a punto del monoplaza es vital para no tener subvirajes ni sobrevirajes bruscos, algo nada aconsejable al pasar por zonas como las “eses” del primer sector, que se pasan a una velocidad en todo momento superior a los 210 km/h. También destaca la curva 130R, cuyo nombre hace referencia al radio de su curvatura, y que se pasa a fondo a más de 300 km/h.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/japon.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 5.807 metros.<br/>
-                    Número de vueltas: 53.<br/>
-                    Distancia de carrera: 307,471 km.<br/>
-                    Carga aerodinámica: Alta.<br/>
-                    Porcentaje de tiempo con el acelerado a fondo: 70% (medio/alto).<br/>
-                    Porcentaje de tiempo frenando: 10% (bajo).<br/>
-                    Desgaste de frenos: Bajo.<br/>
-                    Combustible necesario para el GP: 148 kilos (medio/alto).<br/>
-                    Consumo de combustible por vuelta: 2,73 kilos (medio/alto).<br/>
-                    Pérdida de tiempo por vuelta por cada 10kg de combustible a bordo: 0,385 segundos (alto).<br/>
-                    Tiempo necesario para parada en boxes para repostar: 20,8 segundos (medio).<br/>
-                    Récord: Kimi Raikkonen - McLaren, 1.31.540 en 2005.<br/>
-                    Ganadores del GP de Japón en Suzuka:<br/>
-                    1987: Gerhard Berger (Ferrari).<br/>
-                    1988: Ayrton Senna (McLaren).<br/>
-                    1989: Alessandro Nannini (Benetton).<br/>
-                    1990: Nelson Piquet (Benetton).<br/>
-                    1991: Gerhard Berger (McLaren).<br/>
-                    1992: Riccardo Patrese (Williams).<br/>
-                    1993: Ayrton Senna (McLaren).<br/>
-                    1994: Damon Hill (Williams).<br/>
-                    1995: Michael Schumacher (Benetton).<br/>
-                    1996: Damon Hill (Williams).<br/>
-                    1997: Michael Schumacher (Ferrari).<br/>
-                    1998: Mika Hakkinen (McLaren).<br/>
-                    1999: Mika Hakkinen (McLaren).<br/>
-                    2000: Michael Schumacher (Ferrari).<br/>
-                    2001: Michael Schumacher (Ferrari).<br/>
-                    2002: Michael Schumacher (Ferrari).<br/>
-                    2003: Rubens Barrichello (Ferrari).<br/>
-                    2004: Michael Schumacher (Ferrari).<br/>
-                    2005: Kimi Raikkonen (McLaren).<br/>
-                    2006: Fernando Alonso (Renault).<br/>
-                    2009: Sebastian Vettel (Red Bull).<br/>
-                    2010: Sebastian Vettel (Red Bull).<br/>
-                    2011: Jenson Button (McLaren)<br/>
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 8.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.mobilityland.co.jp" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art16">
-            <scroll id="scroll16">
-                <ul>
-                    <p>
-                    Después del éxito en los últimos años de la organización de Grandes Premios en Singapur y China, Corea es el último país asiático que se prepara para acoger su primer Gran Premio en 2010.
-                    </p>
-                    <p>
-                    La nueva pista se encuentra en la rural región de Jeolla del Sur, al suroeste de la península coreana, a 370 km de la capital, Seúl. La región es un creciente centro para el turismo y la cultura en el noreste de Asia, y los organizadores desarrollarán los alrededores del circuito con un parque de negocios de alta tecnología e instalaciones residenciales y de ocio.
-                    </p>
-                    <p>
-                    La pista de Yeongam, de 5.621 metros y con capacidad para 130.000 espectadores, ha sido diseñada por Hermann Tilke y tendrá dos configuraciones. La mayoría de los eventos se llevarán a cabo en la versión corta de la pista (3.045 metros) que no incluye la recta de meta que se utilizará en los fines de semana de Gran Premio, lo que requiere la construcción de dos paddocks y complejos de boxes.
-                    </p>
-                    <p>
-                    Dispone de una enorme recta de 1,2 kilómetros, la más larga de todos los circuitos asiáticos de F1, y será de las pocas pistas en las que se gira en sentido anti-horario.<br/> Cuenta con una mezcla de largas rectas y horquillas destinadas a favorecer los adelantamientos, con tres buenos lugares para intentarlo en el primer sector, y suficientes curvas como para requerir una cantidad significativa de carga aerodinámica en el resto del circuito.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/corea.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 5.615 metros.<br/>
-                    Número de vueltas: 55.<br/>
-                    Distancia de carrera: 308,630 km.<br/>
-                    Récord: Sebastian Vettel (Red Bull) – 1´39″605 (2011).<br/>
-                    Ganadores del Gran Premio de Corea:<br/>
-                    2010: Fernando Alonso (Ferrari).<br/>
-                    2011: Sebastian Vettel (Red Bull).
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 8.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.f1korea.go.kr" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art17">
-            <scroll id="scroll17">
-                <ul>
-                    <p>
-                    Nuevo circuito en el calendario, es por ello que todavía no tenemos datos concretos del mismo.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/india.jpg"></img>
-                    </div>
-                    <p>
-                    Iremos ampliando información.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art18">
-            <scroll id="scroll18">
-                <ul>
-                    <p>
-                    Gracias a tener una de las mayores reservas de petróleo del mundo, Abu Dhabi está inmerso en un ambicioso programa de desarrollo en el que el circuito de Yas Marina es una de las joyas de la corona. El 1 de noviembre del 2009 este país acogió su primer Gran Premio, que fue también el primero en comenzar de día y acabar de noche, garantizando la seguridad un potente sistema de iluminación.
-                    </p>
-                    <p>
-                    Ubicado en la espectacular isla de Yas y diseñado, cómo no, por Hermann Tilke sin escatimar en recursos y con toda clase de lujo oriental, supone un nuevo concepto integrado en un entorno turístico de tintes futuristas. El paseo marítimo, el glamuroso puerto deportivo repleto de espectaculares yates, el hotel de cinco estrellas y 500 habitaciones que atraviesa el circuito, no dejan lugar a dudas de que dinero hay a mansalva. El Ferrari World, el mayor parque de atracciones bajo techo del mundo, situado junto al circuito y dedicado a la exclusiva marca del Cavallino, es una buena muestra de ello.
-                    </p>
-                    <p>
-                    El circuito gira en sentido contrario a las agujas del reloj, y fue diseñado con pocas escapatorias en algunas zonas, sustituyéndolas por protecciones de gran absorción de energía en caso de impacto. Tiene la recta más larga del mundial de F1, con 1,2 km, y el final de la recta tiene la peculiaridad de tener una escapatoria que se extiende por debajo de la tribuna Oeste, por lo que los coches que se salen de la pista ahí pasan por debajo de los espectadores.
-                    </p>
-                    <p>
-                    Otros elementos diferenciadores son los asientos de tribuna, todos ellos cubiertos para proteger del sol del desierto, o la salida del pit-lane, la única que es subterránea, por lo que los coches al salir de boxes descienden por un túnel y pasan por debajo de la pista incorporándose después de la curva 1.
-                    </p>
-                    <p>
-                    El circuito, en el que se alcanza una velocidad máxima de 320 km/h, y una media de 195 km/h, es largo y exigente, y en él predominan las largas rectas, fuertes frenadas y curvas por lo general lentas. En cuanto a la distancia a recorrer en carrera, no tendrá perdón quien no la recuerde: 55 vueltas al trazado de 5,55 kilómetros.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/abu_dabhi.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud de la pista: 5.554 metros.<br/>
-                    Número de vueltas: 55.<br/>
-                    Distancia de carrera: 305,361 km.<br/>
-                    Carga aerodinámica: Media/Alta.<br/>
-                    Porcentaje de tiempo con el acelerado a fondo: 60% (medio/alto).<br/>
-                    Porcentaje de tiempo frenando: 16%.<br/>
-                    Desgaste de frenos: Medio.<br/>
-                    Combustible necesario para el GP: 151 kilos (medio/alto).<br/>
-                    Consumo de combustible por vuelta: 2,75 kilos (medio/alto).<br/>
-                    Pérdida de tiempo por vuelta por cada 10 kg de combustible a bordo: 0,4 segundos (medio/alto).<br/>
-                    Tiempo total necesario para parada en boxes para repostar: 21,2 segundos.<br/>
-                    Récord: Sebastian Vettel - Red Bull, 1.40.279 en 2009.<br/>
-                    Ganadores del Gran Premio de Abu Dhabi:<br/>
-                    2009: Sebastian Vettel (Red Bull).<br/>
-                    2010: Sebastian Vettel (Red Bull).<br/>
-                    2011: Lewis Hamilton (McLaren).
-                    </p>
-                    <p>
-                        <b>Hora española de carrera: 14.00.</b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.yasmarinacircuit.ae" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art19">
-            <scroll id="scroll19">
-                <ul>
-                    <p>
-                    Gran Premio de EEUU
-                    </p>
-                    <p>
-                    Iremos ampliando información.
-                    </p>
-                </ul>
-            </scroll>
-        </article>
-        <article id="art20">
-            <scroll id="scroll20">
-                <ul>
-                    <p>
-                    En 1938, dos promotores locales compraron una enorme parcela de terreno en Sao Paulo con la intención de construir un gran complejo de viviendas. Pero como una parte del terreno no resultó ser apta para ello, decidieron construir un circuito de carreras, circuito que ante la enorme velocidad a la que creció Sao Paulo pronto se encontró atrapado entre casas. Aunque su nombre es Autódromo José Carlos Pace, se le conoce popularmente como antiguamente, Interlagos, por ser construída entre dos grandes lagos artificiales que abastecían a la ciudad con agua y electricidad.
-                    </p>
-                    <p>
-                    Cuando en los años 70 Emerson Fittipaldi comenzó a destacar internacionalmente, los brasileños demandaban su Gran Premio. En 1971 y 1972 ya se disputaron carreras fuera del campeonato, pero fue en 1973 cuando el trazado acogió su primer Gran Premio dentro del campeonato de F1.
-                    </p>
-                    <p>
-                    En 1978 el Gran Premio se trasladó al nuevo circuito de Jacarepaguá, en Rio de Janeiro, pero en 1979, Sao Paulo pudo recuperarlo otra vez. Sin embargo, en 1981, y debido a que la imagen de los barrios marginales de la ciudad estaba muy lejos de lo que la glamourosa Fórmula 1 quería retratar, Interlagos perdió su Gran Premio, que se volvió a ir a Rio.
-                    </p>
-                    <p>
-                    Fue en 1990, cuando tras una remodelación de 15 millones de dólares y en pleno apogeo del piloto de Sao Paulo, Ayrton Senna, la carrera regresó a Interlagos. Y allí continua, gracias a la enorme pasión de los aficionados brasileños hacia este deporte.
-                    </p>
-                    <p>
-                    Algo anticuado, su trazado ha sido testigo de carreras fascinantes, grandes batallas, y en muchas ocasiones ha decidio el título mundial. Entre sus características están las de girar en sentido anti-horario, sus desniveles, que está bastante bacheado, y que el tiempo allí es bastante variable, con aguaceros torrenciales frecuentes.
-                    </p>
-                    <p>
-                    Con una mezcla de curvas rápidas y lentas bastante bacheadas, se necesita un coche cómodo de pilotar. Las dos primeras curvas ofrecen una buena oportunidad de adelantamiento al ser una frenada en bajada llegando tras una larga subida a fondo saliendo de la última curva. La larga recta en subida pone a prueba la potencia de los motores y la velocidad punta ayuda a adelantar, por lo que es necesario un compromiso en la puesta a punto entre apoyo aerodinámico y velocidad que permita adelantar.
-                    </p>
-                    <div align=center>
-                        <img id="imgespana" src="assets/circuitos/brasil.jpg"></img>
-                    </div>
-                    <p>
-                    Longitud: 4.309 metros.<br/>
-                    Número de vueltas: 71.<br/>
-                    Distancia de carrera: 305,909 km.<br/>
-                    Récord: Juan Pablo Montoya-Williams, 1.11.473 en 2004.<br/>
-                    Pole 2010: Nico Hulkenberg (Williams) – 1′14”470.<br/>
-                    Podio 2010: 1. Sebastian Vettel 2. Mark Webber 3. Fernando Alonso.
-                    </p>
-                    <p>
-                        <b>
-                            Hora española de carrera: 17.00.
-                        </b>
-                    </p>
-                    <p>
-                    Visitar el <a href="http://www.gpbrasil.com/" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
-                    </p>
-                </ul>
-            </scroll>
+        <article id="art7" class="scrollable">
+            <ul>
+                <p>
+                El circuito en el que se disputa este Gran Premio de Canadá está en Montreal y lleva el nombre del mítico piloto local Gilles Villeneuve. Las instalaciones están situadas en una isla repleta de zonas verdes y que tiene parte del trazado transitable el resto del año. Un circuito técnico, complicado y en el que los accidentes, los safety cars y las banderas amarillas suelen poner emoción a la carrera.
+                </p>
+                <p>
+                Junto a las largas rectas, en Montreal encontramos fuertes frenadas y giros muy técnicos. Las frenadas son de las más duras de todo el año, con seis frenadas superiores a los 250 km/h (cuatro de ellas por encima incluso de los 300), lo que castiga mucho los frenos de los monoplazas, que se desgastan muchísimo. Ante este panorama, la estabilidad y el agarre serán puntos clave, especialmente en la salida de las curvas. Los motores sufren un gran castigo por el tiempo que hay que ir a fondo de manera continua en la recta más larga (14 segundos). En el cómputo global, el uso del motor al máximo no es excesivamente alto (se marcha a fondo el 60% del tiempo).
+                </p>
+                <p>
+                Los neumáticos que se llevan a Canadá son los super-blandos y medios, que no corren demasiado peligro ante la baja carga aerodinámica que tienen los coches allí, aunque pueden sufrir los de los pilotos que no los cuiden en las frenadas y piquen de manera brusca el pedal para detener los monoplazas en los pasos por curva.
+                </p>
+                <p>
+                <u>El muro de los campeones</u><br/>
+                Emplazado en la entrada a la recta de meta, este muro es uno de esos puntos míticos del Mundial de Fórmula 1 que es, a partes iguales, odiado y amado. El único muro con nombre propio y con el que se la han visto tantos campeones de esta especialidad. Es el final de la chicane con la que se llega a meta y que sirve para pasar de más de 300 km/h a unos 150 con el que los coches salen escupidos hacia un muro por el que los pilotos tienen que pasar a pocos centímetros para apurar hasta el último segundo en cada uno de los giros a este circuito.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/canada.jpg"></img>
+                </div>
+                <p>
+                <u>El accidente de Kubica</u><br/>
+                Se trata normalmente de carreras accidentadas las que se disputan en Montreal y la del 2007 es uno de los ejemplos más claros. En uno de los grandes premios más movidos de los que se recuerdan sólo acabaron 12 pilotos, el coche de seguridad tuvo que salir tres veces, la diferencia entre el primero y el último clasificado fue de sólo 30 segundos y Robert Kubica sufrió el accidente más grave de todos los que ha tenido en su carrera. En 2008 volvió para lograr su primera victoria en F1.
+                </p>
+                <p>
+                Vuelta rápida: R. Barrichello – 1’13”622 (2004, Ferrari).<br/>
+                Record Pole: R. Schumacher – 1’12”275 (2004, Williams).<br/>
+                Pole 2011: S. Vettel – 1’13”014 (Red Bull).<br/>
+                Podio 2011: 1. Jenson Button 2. Sebastian Vettel 3. Mark Webber.<br/>
+                Longitud de la pista: 4.361 km.<br/>
+                Número de vueltas: 70 (305.270 Km).<br/>
+                Número de curvas: 12 (izquierda:5) (derecha:7).<br/>
+                Velocidad máxima: 348 Km/h.
+                </p>
+                <p>
+                    <b>Hora española de carrera: 19.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.circuitgillesvilleneuve.ca" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
         </article>
 
-        <!--<footer></footer>-->
+        <article id="art8" class="scrollable">
+            <ul>
+                <p>
+                En agosto del 2008 la ciudad de Valencia albergó su primer Gran Premio de F1 en un nuevo circuito urbano situado en el recientemente renovado puerto deportivo Juan Carlos I.
+                </p>
+                <p>
+                El circuito, que se monta y desmonta sobre las avenidas y calles de la ciudad tiene su recta de salida y los boxes en el Tinglado Nº4 del puerto, un edificio de finales del siglo XIX, continuando el trazado por el nuevo barrio de Grao rodeando la dársena pasando por delante de las bases de la America´s Cup, la famosa competición naútica. Después atraviesa el paseo de las palmeras de Foredek, para llegar a la explanada previa a la Marina Norte y atravesar el canal por un puente que se ha convertido en símbolo del circuito.
+                </p>
+                <p>
+                Una vez en el lado sur del puerto, los coches pasan muy cerca del borde del muelle para entrar en Grao y volver a la zona portuaria por la Avenida de Francia. Con 14 metros de anchura el circuito urbano de Valencia fue diseñado con escapatorias para cumplir con las mismas especificaciones de seguridad de los circuitos permanentes.
+                </p>
+                <p>
+                Diseñado por Hermann Tilke, cuenta con nada menos que 25 curvas y por su configuración es similar al circuito canadiense de Gilles Villeneuve, trazado de acelerar-frenar. Destacan sus largas rectas, sobretodo la del segundo sector, las horquillas 17 y 25, y sus chicanes.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/europa.jpg"></img>
+                </div>
+                <p>
+                Longitud: 5.419 metros.<br/>
+                Número de vueltas: 57.<br/>
+                Distancia de carrera: 308,883 km.<br/>
+                Récord: Timo Glock - Toyota, 1.38.683 en 2009.<br/>
+                Vencedores del Gran Premio de Europa en el Valencia Street Circuit:<br/>
+                2008: Felipe Massa (Ferrari).<br/>
+                2009: Rubens Barrichello (Brawn GP).<br/>
+                2010: Sebastian Vettel (Red Bull).<br/>
+                2011: Sebastian Vettel (Red Bull).
+                </p>
+                <p>
+                    <b>Hora española de carrera: 14.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.valenciastreetcircuit.com" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art9" class="scrollable">
+            <ul>
+                <p>
+                Como muchos otros circuitos de Inglaterra, Silverstone comenzó siendo un aeródromo. Cuando terminó la Segunda Guerra Mundial en 1945, los otros dos circuitos ingleses, Donington Park y Brooklands, quedaron en muy mal estado, por lo que el antiguo aeródromo se convirtió en la sede del Gran Premio de Gran Bretaña en 1948. Rápido y desafiante, en 1949 tomó la forma que sigue siendo la base del actual trazado, y aquí se disputó la primera carrera de la historia de la Fórmula 1, en 1950, Gran Premio que ganó Giuseppe Farina con un Alfa Romeo.
+                </p>
+                <p>
+                A partir de 1955, el Gran Premio de Gran Bretaña comenzó a rotar entre Aintree y Silverstone, para pasar en 1963 a hacerlo entre Silverstone y Brands Hatch. El circuito fue objeto de varias remodelaciones a lo largo de su historia, y en 1987 pasó a ser el único circuito en el que se ha celebrado el Gran Premio hasta ahora, después de que se añadiera una nueva curva antes de Woodcote para reducir las terribles velocidades que se alcanzaban, y de que en 1992 se creara un nuevo complejo de curvas entre Farm y Woodcote. A partir del 2010 el Gran Premio de Gran Bretaña iba a ser acogido por el circuito de Donington Park, pero debido a problemas económicos de los organizadores, el GP permanecerá en Silverstone por 16 años más.
+                </p>
+                <p>
+                Para inciar esta nueva época, en 2010, el circuito estrena una nueva configuración destinada a mejorar el disfrute de los espectadores y hacer de Silverstone un reto aún mayor para los pilotos. Y es que el nuevo complejo de curvas denominado “Arena”, que comienza en la remodelada Abbey (curva 1) para volver al antiguo trazado en Brooklands (curva 6), hace que al contrario de lo que suele suceder, el circuito sea más rápido aún que antes.
+                </p>
+                <p>
+                En 2011 se completa el proyecto de renovación del circuito con el cambio de la posición de la recta de meta, ahora entre la curva Club (18) y Abbey (1), inaugurándose un nuevo paddock y edificio de boxes.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/GB.jpg"></img>
+                </div>
+                <p>
+                Con una gran cantidad de curvas rápidas que exigen una elevada carga aerodinámica, el circuito pone los pelos de punta, sobretodo cuando los pilotos se lanzan en séptima velocidad a la curva 9, Copse, para llegar a 300km/h a Becketts, una secuencia de curvas muy fluída en la que los pilotos casi (o sin casi) no tocan los frenos y en la que la alta velocidad genera un apoyo en el coche que hace que los pilotos sufran tremendas fuerzas G.
+                </p>
+                <p>
+                Longitud: 5.891 metros.<br/>
+                Número de vueltas: 52.<br/>
+                Distancia de carrera: 306,227 km.<br/>
+                Récord: Fernando Alonso - Ferrari, 1.30.874 en 2010.<br/>
+                Pole 2011: Mark Webber (Red Bull) 1.30.399.<br/>
+                Podio 2011: 1. Fernando Alonso 2. Sebastian Vettel 3. Mark Webber.
+                </p>
+                <p>
+                <b>Hora española de carrera: 14.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.silverstone.co.uk" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art10" class="scrollable">
+            <ul>
+                <p>
+                El circuito de Hockenheim fue construído en 1939 como circuito de pruebas de alta velocidad de Mercedes-Benz. Cuando estalló la guerra se paralizó su construcción, y en la Alemania de la posguerra Nurburgring se convirtió en la sede de la Fórmula 1, dejando Hockenheim para eventos menos importantes. Cuando se aprobó un plan para construir una autopista a través del circuito, el gobierno indemnizó con una gran suma de dinero, dinero que se empleó para construir el nuevo y ya famoso circuito de Hockenheim.
+                </p>
+                <p>
+                A pesar de que en 1968 Jim Clark falleciera en esta pista en una carrera de F2, la Fórmula 1 llegó a Hockenheim en 1970 debido a que las instalaciones de Nurburgring se estaban quedando obsoletas. Pero Nurburgring fue renovado y la Fómula 1 volvió allí, hasta que en 1976 Niki Lauda sufriera un terrible accidente en el que sufrió graves quemaduras, pasando Hockeinheim a convertirse en la sede del Gran Premio de Alemania a partir de 1977. En 1980 murió Patrick Depailler mientras entrenaba en la pista, por lo que se colocó una chicane para reducir la velocidad en aquella zona (Ostkurve).
+                </p>
+                <p>
+                Desde el debut de Michael Schumacher, el Gran Premio de Alemania en Hockenheim ha sido una de las carreras con más ambiente, con un griterío ensordecedor en la zona del estadio. Para la edición del 2002, el circuito fue rediseñado por Hermann Tilke. Se mantuvo el estadio, pero se acortó el trazado al eliminarse las largas rectas de los bosques, perdiendo algo de su especial carácter, a pesar de lo cual la pista es muy buena para las carreras y ha seguido siendo un escenario habitual del calendario de F1, alternándose actualmente el Gran Premio de Alemania entre esta pista y la de Nurburgring.
+                </p>
+                <p>
+                A pesar de las modificaciones que se le han ido realizando para reducir la velocidad, Hockenheim sigue siendo un circuito muy rápido, por lo que es muy duro para los motores al tener que ir mucho tiempo altos de revoluciones. La puesta a punto resulta complicada por la necesidad de tener una elevada velocidad punta, pero también una buena adherencia en la parte virada y en las frenadas,  con lo que la búsqueda de ese delicado equilibrio es muy importante. La frenada para la horquilla (curva 6) es un buen punto de adelantamiento.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/alemania.jpg"></img>
+                </div>
+                <p>
+                Longitud: 4.574 metros.<br/>
+                Número de vueltas: 67.<br/>
+                Distancia de carrera: 306,458 km.<br/>
+                Récord: Kimi Raikkonen - McLaren, 1.13.780 en 2004.<br/>
+                Pole 2010: Sebastian Vettel (Red Bull), 1.13.791.<br/>
+                Podio 2010: 1. Fernando Alonso 2. Felipe Massa 3. Sebastian Vettel.
+                </p>
+                <p>
+                <b>Hora española de carrera: 14.00.</b>
+                </p>
+                Visitar el <a href="http://www.hockenheimring.com" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art11" class="scrollable">
+            <ul>
+                <p>
+                A pesar de que en 1936 se organizó en Hungría un Gran Premio, no fue hasta 50 años después, en 1986,  cuando las autoridades deportivas del país lograron volver a poner a Hungría en el mapa del automovilismo mundial al organizar su primer Gran Premio de Fórmula 1. En un principio se pensó en celebrar el GP por las calles de Budapest, pero finalmente se optó por construir un nuevo circuito en un valle a 20 km de la preciosa ciudad. Hungaroring se comenzó a construir en 1985 y el valle permitía a los espectadores tener unas excelentes vistas del circuito, que vio llegar a la F1 en agosto de 1986. Desde entonces, siempre ha estado en el calendario de la F1, y en varias ocasiones ha ofrecido espectaculares carreras.
+                </p>
+                <p>
+                Lento y revirado, para los pilotos es un circuito divertido para pilotar, pero el asfalto provoca bastante quebraderos de cabeza a pilotos y equipos por dos motivos: Uno, el polvo, debido a que la pista no se usa mucho el resto del año, haciendo que el agarre vaya mejorando según se va limpiando y se acumula la goma tras el paso de los monoplazas. El segundo, es su temperatura, ya que normalmante hace mucho calor, superando habitualmente el asfalto los 50ºC. El calor también lo hace duro físicamente para los pilotos porque la carrera suele ser muy larga, casi en el límite de las dos horas. Al margen de la recta de 700 metros, el resto es una sucesión de curvas de media y baja velocidad, por lo que la configuración de los coches es de máxima carga aerodinámica, similar a la de Mónaco, lo que permite a los pilotos ser agresivos con el coche. El agarre mecánico es muy importante, y los reglajes de la suspensión se ablandan un poco para mejorarlo y para disponer de buena tracción a la salida de las curvas, que obligan al piloto a dosificar continuamente el acelerador. La ausencia de largas rectas, y por lo tanto también de fuertes frenadas, hace que los adelantamientos sean muy complicados. La frenada para la primera curva es la mejor oportunidad, pero el piloto de delante tiene que cometer un error saliendo de la última curva para poder cogerle el rebufo en la recta.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/hungria.jpg"></img>
+                </div>
+                <p>
+                Longitud: 4.381 metros.<br/>
+                Número de vueltas: 70.<br/>
+                Distancia de carrera: 306,630 km.<br/>
+                Récord: Michael Schumacher - Ferrari, 1.19.071 en 2004.<br/>
+                Pole 2011: Sebastian Vettel (Red Bull), 1.19.815.<br/>
+                Podio 2011: 1. Jenson Button 2. Sebastian Vettel 3. Fernando Alonso.
+                </p>
+                <p>
+                <b>Hora española de carrera: 14.00.</b>
+                </p>
+            </ul>
+        </article>
+
+        <article id="art12" class="scrollable">
+            <ul>
+                <p>
+                Spa-Francorchamps es uno de los circuitos más históricos del calendario de la Fórmula 1. En 1924 ya acogió un Gran Premio, y casi 90 años después sigue siendo el circuito favorito de gran parte de los pilotos y aficionados.
+                </p>
+                <p>
+                El trazado original de Spa consistía en 14,9 kilómetros de estrechas y peligrosas vías públicas, y aunque a través de los años se fue acortando ligeramente su distancia con algunos cambios, cuando en 1970 albergó el último Gran Premio en su vieja configuración, todavía medía más de 14 kilómetros y seguía siendo increíblemente rápido, logrando Chris Amon la vuelta rápida aquel año a una media de 245 km/h.
+                </p>
+                <p>
+                Spa no volvió al calendario de la Fórmula 1 hasta 1983, con una configuración drásticamente revisada al ser su longitud recortada a 7 kilómetros, pero afortunadamente la magia del circuito permaneció intacta. Dos tercios de la vuelta siguen utilizando el trazado antiguo, y la legendaria curva de Eau Rouge, con su brutal desnivel, sigue siendo parte fundamental del mismo.
+                </p>
+                <p>
+                Más de 20 años después, Spa sigue siendo el circuito más largo del calendario. El trazado sigue las ondulaciones naturales de la región de las Ardenas, combinando largas rectas con difíciles curvas rápidas en un bonito entorno forestal. No es de extrañar por tanto que siga siendo uno de los circuitos favoritos de los pilotos.
+                </p>
+                <p>
+                Circuito de baja carga aerodinámica debido a la importancia de tener una buena velocidad en sus largas rectas, tiene en la climatología otra de sus peculiares características. El tiempo es notoriamente variable y dada su longitud, a menudo llueve en unas zonas del circuito mientras que otras están secas.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/spa.jpg"></img>
+                </div>
+                <p>
+                Longitud: 7.004 metros.<br/>
+                Número de vueltas: 44.<br/>
+                Distancia de carrera: 308,052 km.<br/>
+                Récord: Kimi Raikkonen - McLaren, 1.45.108 en 2004.<br/>
+                Pole 2011: Sebastian Vettel (Red Bull) – 1′48”298.<br/>
+                Podio 2011: 1. Sebastian Vettel 2. Mark Webber 3. Jenson Button.
+                </p>
+                <p>
+                    <b>Hora española de carrera: 14.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.spa-francorchamps.be" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art13" class="scrollable">
+            <ul>
+                <p>
+                El de Monza es un circuito clave en la historia de la Fórmula 1. Ejemplo fantástico de circuito de alta velocidad, los viejos árboles del histórico parque de las afueras de Milán han sido testigos de algunas de las mejores carreras de todos los tiempos, pero también de algunos de los peores accidentes de este deporte. La lista de inolvidables victorias y terribles accidentes es muy larga, y se combinan para hacer del Autodromo Nazionale di Monza uno de los lugares más mágicos del calendario de la Fórmula 1.
+                </p>
+                <p>
+                Se comenzó a construír en 1922, y con un óvalo peraltado incorporado en su diseño su longitud era de nada menos que 10 kilómetros. El trazado sufrió múltiples variaciones, casi siempre en respuesta a trágicos accidentes que sucedieron, hasta que la Segunda Guerra Mundial provocó que se suspendieran los Grandes Premios hasta el año 48. Sin embargo no sería hasta cinco años después de la creación de la Fórmula 1, en 1955, cuando tras una reconstrucción que dejó su longitud en los actuales 5,7 kilómetros, comenzó a acoger la F1. Desde entonces, las modificaciones han sido múltiples, siempre para mejorar la seguridad. Ni falta hace decir que los tifosi italianos apoyando a su Scuderia Ferrari crean un ambiente impresionante.
+                </p>
+                <p>
+                En su configuración actual Monza sigue siendo un circuito rapidísimo, el más rápido del Mundial, y un desafío singular para pilotos y equipos. La velocidad media en una vuelta supera los 250 km/h, y en cuatro puntos diferentes se superan los 330km/h. Precisamente por la longitud de sus rectas, los monoplazas ruedan en el Autodromo con una configuración aerodinámica específica para este circuito, con tan poca carga aerodinámica como sea posible sin comprometer la estabilidad en las frenadas. El agarre se sacrifica para lograr una mayor velocidad en recta, y con tan poca carga, incluso los pilotos notan que el monoplaza acelera más que de costumbre.<br/>
+                Las largas rectas hacen que los motores estén sometidos a grandes esfuerzos debido a que más del 75% de la vuelta se recorre con el acelerador a fondo, y los frenos también tienen un enorme trabajo para detener el coche en las fortísimas frenadas. Otro punto importante son las suspensiones, ya que pasar por encima de los pianos en las chicanes y acelerar lo antes posible es importante a la hora de marcar un buen crono.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/italia.jpg"></img>
+                </div>
+                <p>
+                Longitud: 5.793 metros.<br/>
+                Número de vueltas: 53.<br/>
+                Distancia de carrera: 306,720 km.<br/>
+                Récord: Rubens Barrichello - Ferrari, 1.21.046 en 2004.<br/>
+                Pole 2011: Sebastian Vettel (Red Bull) – 1′22”275.<br/>
+                Podio 2011: 1. Sebastian Vettel 2. Jenson Button 3. Fernando Alonso.
+                </p>
+                <p>
+                    <b>Hora española de carrera: 14.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.monzanet.it" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art14" class="scrollable">
+            <ul>
+                <p>
+                En 2008 Singapur tuvo el honor de acoger el primer Gran Premio nocturno de la historia de la Fórmula 1. Esta particularidad, junto con su trazado urbano con el horizonte de la ciudad como telón de fondo han creado un GP espectacular y de gran ambiente, que además por su horario puede ser retransmitido a una hora apropiada para las audiencias de las televisiones europeas. Utilizando vías públicas alrededor de la zona de Marina Bay, el circuito utiliza potentes sistemas de iluminación para garantizar la seguridad.
+                </p>
+                <p>
+                El GP en este trazado que gira en sentido contrario a las agujas del reloj es uno de los más duros por su duración (casi agota el límite de dos horas), calor, humedad y una constante sucesión de curvas lentas de segunda o tercera velocidad, lo que también hace que el motor esté entregando toda su potencia durante menos de la mitad de la vuelta. Si para el motor es el circuito menos duro, no lo es así para los frenos, que no tienen apenas descanso entre curva y curva.
+                </p>
+                <p>
+                Los reglajes para este circuito urbano son parecidos a los de Mónaco, con mucha carga aerodinámica, y el agarre mecánico tiene gran importancia para traccionar en la salida de las curvas, por lo que las suspensiones tienden a ser más blandas.
+                </p>
+                <p>
+                La meteorología también juega un importante papel en la zona, porque el calor se combina con frecuentes tormentas al anochecer.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/singapur.jpg"></img>
+                </div>
+                <p>
+                Longitud: 5.073 metros.<br/>
+                Número de vueltas: 61.<br/>
+                Distancia de carrera: 309,316 km.<br/>
+                Carga aerodinámica: Alta.<br/>
+                Porcentaje de tiempo con el acelerado a fondo: 43% (bajo).<br/>
+                Porcentaje de tiempo frenando: 21%.<br/>
+                Desgaste de frenos: Muy alto.<br/>
+                Combustible necesario para el GP: 165 kilos (muy alto).<br/>
+                Consumo de combustible por vuelta: 2,5 kilos (medio/alto).<br/>
+                Pérdida de tiempo por vuelta por cada 10kg de combustible a bordo: 0,35 segundos (alto).<br/>                    
+                Récord: Kimi Raikkonen - Ferrari, 1.45.599 en 2008.<br/>
+                Ganadores del Gran Premio de Singapur en Marina Bay:<br/>
+                2008: Fernando Alonso (Renault).<br/>
+                2009: Lewis Hamilton (McLaren).<br/>
+                2010: Fernando Alonso (Ferrari).<br/>
+                2011: Sebastian Vettel (Red Bull).
+                </p>
+                <p>
+                    <b>Hora española de carrera: 14.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.singaporegp.sg" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art15" class="scrollable">
+            <ul>
+                <p>
+                Suzuka es uno de los mejores circuitos de la Fórmula 1 actual. Construido por Honda en 1962 como circuito de pruebas, tiene como característica única en la actual F1 su forma de “ocho”, y su exigente trazado es una excelente prueba para comprobar la competitividad de un F1 y la habilidad de los pilotos. La pista también tiene un enorme parque temático que incluye una famosa noria.
+                </p>
+                <p>
+                En 1976 se disputó el primer Gran Premio de Japón, pero lo hizo en el circuito de Fuji, propiedad de Toyota. Tras disputarse allí en 1976 y 1977, pasaron diez años hasta que en 1987, después de adaptarlo a las exigencias sobre seguridad, Suzuka acogiera su primer Gran Premio de F1. Desde entonces, la prueba se ha mantenido en el calendario hasta ahora, a excepción del 2007 y 2008, cuando se volvió a disputar en Fuji.
+                </p>
+                <p>
+                Tradicionalmente la de Suzuka ha sido de las últimas carreras del calendario, lo que ha hecho que aquí se hayan decidido muchos títulos, con momentos inolvidables como el accidente entre Alain Prost y Ayrton Senna en la chicane.
+                </p>
+                <p>
+                Junto con Spa-Francorchamps, Suzuka es uno de los circuitos favoritos de los pilotos. Tremendamente técnico y difícil, en él los buenos pilotos suelen marcar diferencias. Con sus desniveles tiene cierto parecido con el de Spa, pero la gran cantidad de curvas exige más carga aerodinámica que el trazado belga. Las curvas rápidas son mayoría y muchas son enlazadas, por lo que es muy importante que el coche reaccione bien en los cambios de dirección. Los pilotos también tienen que ser muy precisos en sus trazadas ya que un error en una curva les penaliza en las siguientes.
+                </p>
+                <p>
+                Lograr un buen equilibrio en la puesta a punto del monoplaza es vital para no tener subvirajes ni sobrevirajes bruscos, algo nada aconsejable al pasar por zonas como las “eses” del primer sector, que se pasan a una velocidad en todo momento superior a los 210 km/h. También destaca la curva 130R, cuyo nombre hace referencia al radio de su curvatura, y que se pasa a fondo a más de 300 km/h.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/japon.jpg"></img>
+                </div>
+                <p>
+                Longitud: 5.807 metros.<br/>
+                Número de vueltas: 53.<br/>
+                Distancia de carrera: 307,471 km.<br/>
+                Carga aerodinámica: Alta.<br/>
+                Porcentaje de tiempo con el acelerado a fondo: 70% (medio/alto).<br/>
+                Porcentaje de tiempo frenando: 10% (bajo).<br/>
+                Desgaste de frenos: Bajo.<br/>
+                Combustible necesario para el GP: 148 kilos (medio/alto).<br/>
+                Consumo de combustible por vuelta: 2,73 kilos (medio/alto).<br/>
+                Pérdida de tiempo por vuelta por cada 10kg de combustible a bordo: 0,385 segundos (alto).<br/>
+                Tiempo necesario para parada en boxes para repostar: 20,8 segundos (medio).<br/>
+                Récord: Kimi Raikkonen - McLaren, 1.31.540 en 2005.<br/>
+                Ganadores del GP de Japón en Suzuka:<br/>
+                1987: Gerhard Berger (Ferrari).<br/>
+                1988: Ayrton Senna (McLaren).<br/>
+                1989: Alessandro Nannini (Benetton).<br/>
+                1990: Nelson Piquet (Benetton).<br/>
+                1991: Gerhard Berger (McLaren).<br/>
+                1992: Riccardo Patrese (Williams).<br/>
+                1993: Ayrton Senna (McLaren).<br/>
+                1994: Damon Hill (Williams).<br/>
+                1995: Michael Schumacher (Benetton).<br/>
+                1996: Damon Hill (Williams).<br/>
+                1997: Michael Schumacher (Ferrari).<br/>
+                1998: Mika Hakkinen (McLaren).<br/>
+                1999: Mika Hakkinen (McLaren).<br/>
+                2000: Michael Schumacher (Ferrari).<br/>
+                2001: Michael Schumacher (Ferrari).<br/>
+                2002: Michael Schumacher (Ferrari).<br/>
+                2003: Rubens Barrichello (Ferrari).<br/>
+                2004: Michael Schumacher (Ferrari).<br/>
+                2005: Kimi Raikkonen (McLaren).<br/>
+                2006: Fernando Alonso (Renault).<br/>
+                2009: Sebastian Vettel (Red Bull).<br/>
+                2010: Sebastian Vettel (Red Bull).<br/>
+                2011: Jenson Button (McLaren)<br/>
+                </p>
+                <p>
+                    <b>Hora española de carrera: 8.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.mobilityland.co.jp" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art16" class="scrollable">
+            <ul>
+                <p>
+                Después del éxito en los últimos años de la organización de Grandes Premios en Singapur y China, Corea es el último país asiático que se prepara para acoger su primer Gran Premio en 2010.
+                </p>
+                <p>
+                La nueva pista se encuentra en la rural región de Jeolla del Sur, al suroeste de la península coreana, a 370 km de la capital, Seúl. La región es un creciente centro para el turismo y la cultura en el noreste de Asia, y los organizadores desarrollarán los alrededores del circuito con un parque de negocios de alta tecnología e instalaciones residenciales y de ocio.
+                </p>
+                <p>
+                La pista de Yeongam, de 5.621 metros y con capacidad para 130.000 espectadores, ha sido diseñada por Hermann Tilke y tendrá dos configuraciones. La mayoría de los eventos se llevarán a cabo en la versión corta de la pista (3.045 metros) que no incluye la recta de meta que se utilizará en los fines de semana de Gran Premio, lo que requiere la construcción de dos paddocks y complejos de boxes.
+                </p>
+                <p>
+                Dispone de una enorme recta de 1,2 kilómetros, la más larga de todos los circuitos asiáticos de F1, y será de las pocas pistas en las que se gira en sentido anti-horario.<br/> Cuenta con una mezcla de largas rectas y horquillas destinadas a favorecer los adelantamientos, con tres buenos lugares para intentarlo en el primer sector, y suficientes curvas como para requerir una cantidad significativa de carga aerodinámica en el resto del circuito.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/corea.jpg"></img>
+                </div>
+                <p>
+                Longitud: 5.615 metros.<br/>
+                Número de vueltas: 55.<br/>
+                Distancia de carrera: 308,630 km.<br/>
+                Récord: Sebastian Vettel (Red Bull) – 1´39″605 (2011).<br/>
+                Ganadores del Gran Premio de Corea:<br/>
+                2010: Fernando Alonso (Ferrari).<br/>
+                2011: Sebastian Vettel (Red Bull).
+                </p>
+                <p>
+                    <b>Hora española de carrera: 8.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.f1korea.go.kr" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art17" class="scrollable">
+            <ul>
+                <p>
+                Nuevo circuito en el calendario, es por ello que todavía no tenemos datos concretos del mismo.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/india.jpg"></img>
+                </div>
+                <p>
+                Iremos ampliando información.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art18" class="scrollable">
+            <ul>
+                <p>
+                Gracias a tener una de las mayores reservas de petróleo del mundo, Abu Dhabi está inmerso en un ambicioso programa de desarrollo en el que el circuito de Yas Marina es una de las joyas de la corona. El 1 de noviembre del 2009 este país acogió su primer Gran Premio, que fue también el primero en comenzar de día y acabar de noche, garantizando la seguridad un potente sistema de iluminación.
+                </p>
+                <p>
+                Ubicado en la espectacular isla de Yas y diseñado, cómo no, por Hermann Tilke sin escatimar en recursos y con toda clase de lujo oriental, supone un nuevo concepto integrado en un entorno turístico de tintes futuristas. El paseo marítimo, el glamuroso puerto deportivo repleto de espectaculares yates, el hotel de cinco estrellas y 500 habitaciones que atraviesa el circuito, no dejan lugar a dudas de que dinero hay a mansalva. El Ferrari World, el mayor parque de atracciones bajo techo del mundo, situado junto al circuito y dedicado a la exclusiva marca del Cavallino, es una buena muestra de ello.
+                </p>
+                <p>
+                El circuito gira en sentido contrario a las agujas del reloj, y fue diseñado con pocas escapatorias en algunas zonas, sustituyéndolas por protecciones de gran absorción de energía en caso de impacto. Tiene la recta más larga del mundial de F1, con 1,2 km, y el final de la recta tiene la peculiaridad de tener una escapatoria que se extiende por debajo de la tribuna Oeste, por lo que los coches que se salen de la pista ahí pasan por debajo de los espectadores.
+                </p>
+                <p>
+                Otros elementos diferenciadores son los asientos de tribuna, todos ellos cubiertos para proteger del sol del desierto, o la salida del pit-lane, la única que es subterránea, por lo que los coches al salir de boxes descienden por un túnel y pasan por debajo de la pista incorporándose después de la curva 1.
+                </p>
+                <p>
+                El circuito, en el que se alcanza una velocidad máxima de 320 km/h, y una media de 195 km/h, es largo y exigente, y en él predominan las largas rectas, fuertes frenadas y curvas por lo general lentas. En cuanto a la distancia a recorrer en carrera, no tendrá perdón quien no la recuerde: 55 vueltas al trazado de 5,55 kilómetros.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/abu_dabhi.jpg"></img>
+                </div>
+                <p>
+                Longitud de la pista: 5.554 metros.<br/>
+                Número de vueltas: 55.<br/>
+                Distancia de carrera: 305,361 km.<br/>
+                Carga aerodinámica: Media/Alta.<br/>
+                Porcentaje de tiempo con el acelerado a fondo: 60% (medio/alto).<br/>
+                Porcentaje de tiempo frenando: 16%.<br/>
+                Desgaste de frenos: Medio.<br/>
+                Combustible necesario para el GP: 151 kilos (medio/alto).<br/>
+                Consumo de combustible por vuelta: 2,75 kilos (medio/alto).<br/>
+                Pérdida de tiempo por vuelta por cada 10 kg de combustible a bordo: 0,4 segundos (medio/alto).<br/>
+                Tiempo total necesario para parada en boxes para repostar: 21,2 segundos.<br/>
+                Récord: Sebastian Vettel - Red Bull, 1.40.279 en 2009.<br/>
+                Ganadores del Gran Premio de Abu Dhabi:<br/>
+                2009: Sebastian Vettel (Red Bull).<br/>
+                2010: Sebastian Vettel (Red Bull).<br/>
+                2011: Lewis Hamilton (McLaren).
+                </p>
+                <p>
+                    <b>Hora española de carrera: 14.00.</b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.yasmarinacircuit.ae" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art19" class="scrollable">
+            <ul>
+                <p>
+                Gran Premio de EEUU
+                </p>
+                <p>
+                Iremos ampliando información.
+                </p>
+            </ul>
+        </article>
+
+        <article id="art20" class="scrollable">
+            <ul>
+                <p>
+                En 1938, dos promotores locales compraron una enorme parcela de terreno en Sao Paulo con la intención de construir un gran complejo de viviendas. Pero como una parte del terreno no resultó ser apta para ello, decidieron construir un circuito de carreras, circuito que ante la enorme velocidad a la que creció Sao Paulo pronto se encontró atrapado entre casas. Aunque su nombre es Autódromo José Carlos Pace, se le conoce popularmente como antiguamente, Interlagos, por ser construída entre dos grandes lagos artificiales que abastecían a la ciudad con agua y electricidad.
+                </p>
+                <p>
+                Cuando en los años 70 Emerson Fittipaldi comenzó a destacar internacionalmente, los brasileños demandaban su Gran Premio. En 1971 y 1972 ya se disputaron carreras fuera del campeonato, pero fue en 1973 cuando el trazado acogió su primer Gran Premio dentro del campeonato de F1.
+                </p>
+                <p>
+                En 1978 el Gran Premio se trasladó al nuevo circuito de Jacarepaguá, en Rio de Janeiro, pero en 1979, Sao Paulo pudo recuperarlo otra vez. Sin embargo, en 1981, y debido a que la imagen de los barrios marginales de la ciudad estaba muy lejos de lo que la glamourosa Fórmula 1 quería retratar, Interlagos perdió su Gran Premio, que se volvió a ir a Rio.
+                </p>
+                <p>
+                Fue en 1990, cuando tras una remodelación de 15 millones de dólares y en pleno apogeo del piloto de Sao Paulo, Ayrton Senna, la carrera regresó a Interlagos. Y allí continua, gracias a la enorme pasión de los aficionados brasileños hacia este deporte.
+                </p>
+                <p>
+                Algo anticuado, su trazado ha sido testigo de carreras fascinantes, grandes batallas, y en muchas ocasiones ha decidio el título mundial. Entre sus características están las de girar en sentido anti-horario, sus desniveles, que está bastante bacheado, y que el tiempo allí es bastante variable, con aguaceros torrenciales frecuentes.
+                </p>
+                <p>
+                Con una mezcla de curvas rápidas y lentas bastante bacheadas, se necesita un coche cómodo de pilotar. Las dos primeras curvas ofrecen una buena oportunidad de adelantamiento al ser una frenada en bajada llegando tras una larga subida a fondo saliendo de la última curva. La larga recta en subida pone a prueba la potencia de los motores y la velocidad punta ayuda a adelantar, por lo que es necesario un compromiso en la puesta a punto entre apoyo aerodinámico y velocidad que permita adelantar.
+                </p>
+                <div align=center>
+                    <img id="imgespana" src="assets/circuitos/brasil.jpg"></img>
+                </div>
+                <p>
+                Longitud: 4.309 metros.<br/>
+                Número de vueltas: 71.<br/>
+                Distancia de carrera: 305,909 km.<br/>
+                Récord: Juan Pablo Montoya-Williams, 1.11.473 en 2004.<br/>
+                Pole 2010: Nico Hulkenberg (Williams) – 1′14”470.<br/>
+                Podio 2010: 1. Sebastian Vettel 2. Mark Webber 3. Fernando Alonso.
+                </p>
+                <p>
+                    <b>
+                        Hora española de carrera: 17.00.
+                    </b>
+                </p>
+                <p>
+                Visitar el <a href="http://www.gpbrasil.com/" target="_blank" class="button">WebSite</a> oficial del Gran Premio.
+                </p>
+            </ul>
+        </article>
     </section>
 
     <section id="secInfo">
         <header data-back="home" data-title="Información"></header>
-            <article id="about">
-                <scroll id="scroll_about">
-                    <ul>
-                        <div align="center" id="div_about">
-                            <p>
-                            Tanto como si lees mi blog de vez en cuando, como si no, es posible que te haya llegado un calendario de F1 alguna vez de los años anteriores, siempre en formato iCal.<br/>
-                            Llevo haciéndoles y distribuyéndoles desde unos años atrás, sólo con el afán de compartir esta información que yo siento útil y parece que mucha más gente también así lo entiende. Pues bien, este año he querido que sea algo distinto.<br/>
-                            Quiero presentarte mi calendario de Fórmula 1 en forma de app, de fácil y rápido acceso para estar informado en todo momento y en cualquier lugar con el plus de no necesitar conexión a Internet para ver toda la información de los circuitos, un poco de su historia y saber cuándo tienes la próxima cita con el apasionante mundo de la Fórmula 1.<br/>Si tienes cualquier sugerencia y/o petición sobre esta app, te agradecería te pusieras en contacto conmigo a través de email o twitter:
-                            </p>
-                            <div align="center">
-                            <a href="mailto:koldomac@gmail.com?subject=App Calendario F1" class="button big" data-icon="mail">koldomac@gmail.com</a>
-                            <a href="http://www.twitter.com/koldomac/" target="_blank" class="button big twitter" data-icon="twitter">@KoldoMac</a>
-                            </div>
-                            <p>
-                            Esta app ha sido realizada con <a href="http://www.lungojs.com" target="_blank" class="button">LungoJS</a>
-                            </p>
-                            <img src="assets/images/lungojs.png"></img>                            
-                            <p>
-                            Los datos que aparecen sobre los circuitos han sido facilitados casi por completo por el WebSite: FormulaF1.es.<br/>
-                            Desde aquí, darles las gracias por dejarme usar su buen contenido en esta app.
-                            </p>
-                            <p>Más información en <a href="http://www.FormulaF1.es/" target="_blank" class="button">FormulaF1.es</a>
-                            </p>
+            <article id="about" class="scrollable">
+                <ul>
+                    <div align="center" id="div_about">
+                        <p>
+                        Tanto como si lees mi blog de vez en cuando, como si no, es posible que te haya llegado un calendario de F1 alguna vez de los años anteriores, siempre en formato iCal.<br/>
+                        Llevo haciéndoles y distribuyéndoles desde unos años atrás, sólo con el afán de compartir esta información que yo siento útil y parece que mucha más gente también así lo entiende. Pues bien, este año he querido que sea algo distinto.<br/>
+                        Quiero presentarte mi calendario de Fórmula 1 en forma de app, de fácil y rápido acceso para estar informado en todo momento y en cualquier lugar con el plus de no necesitar conexión a Internet para ver toda la información de los circuitos, un poco de su historia y saber cuándo tienes la próxima cita con el apasionante mundo de la Fórmula 1.<br/>Si tienes cualquier sugerencia y/o petición sobre esta app, te agradecería te pusieras en contacto conmigo a través de email o twitter:
+                        </p>
+                        <div align="center">
+                        <a href="mailto:koldomac@gmail.com?subject=App Calendario F1" class="button big" data-icon="mail">koldomac@gmail.com</a>
+                        <a href="http://www.twitter.com/koldomac/" target="_blank" class="button big twitter" data-icon="twitter">@KoldoMac</a>
                         </div>
-                    </ul>
-                </scroll>                
+                        <p>
+                        Esta app ha sido realizada con <a href="http://www.lungojs.com" target="_blank" class="button">LungoJS</a>
+                        </p>
+                        <img src="assets/images/lungojs.png"></img>                            
+                        <p>
+                        Los datos que aparecen sobre los circuitos han sido facilitados casi por completo por el WebSite: FormulaF1.es.<br/>
+                        Desde aquí, darles las gracias por dejarme usar su buen contenido en esta app.
+                        </p>
+                        <p>Más información en <a href="http://www.FormulaF1.es/" target="_blank" class="button">FormulaF1.es</a>
+                        </p>
+                    </div>
+                </ul>           
             </article>            
     </section>
 
     <!-- LungoJS (Production mode) -->
-    <script src="lungo.js/lungo-1.0.3.packed.js"></script>
+    <script src="lungo.js/lungo-1.1.packed.js"></script>
     <!-- LungoJS - Sandbox App -->
     <script src="app/app.js"></script>
     <script src="app/data.js"></script>

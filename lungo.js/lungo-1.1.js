@@ -14,7 +14,7 @@
  *
  * @copyright 2011 TapQuo Inc (c)
  * @license   http://www.github.com/tapquo/lungo/blob/master/LICENSE.txt
- * @version   1.0.3
+ * @version   1.1
  * @link      https://github.com/TapQuo/Lungo.js
  *
  * @author   Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
@@ -23,7 +23,7 @@
 
 var LUNGO = LUNGO || {};
 
-LUNGO.VERSION = '1.0.3';
+LUNGO.VERSION = '1.1';
 
 LUNGO.Attributes || (LUNGO.Attributes = {});
 LUNGO.Data || (LUNGO.Data = {});
@@ -77,79 +77,6 @@ LUNGO.App = (function(lng, undefined) {
 })(LUNGO);
 
 /**
- * Set environment (Desktop or Mobile) automatically, depending on the
- * environment the subscribed events wil be different.
- *
- * @namespace LUNGO
- * @class Environment
- *
- * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
- * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
- */
-
-LUNGO.Environment = (function(lng, undefined) {
-
-    var MOBILE_ENVIRONMENT  = 'mobile';
-    var DESKTOP_ENVIRONMENT = 'desktop';
-
-    var _environment = DESKTOP_ENVIRONMENT;
-
-    /**
-     * Analizing if it's run in Mobile Phone and changing the type of event to subscribe.
-     *
-     * @method start
-     */
-    var start = function() {
-        if (lng.Core.isMobile()) {
-            _environment = MOBILE_ENVIRONMENT;
-            _saveStatsInLungoJS();
-        }
-    };
-
-    /**
-     * Gets the current environment for LungoJS
-     *
-     * @method init
-     *
-     * @return {String} Current environment enumerator
-     */
-    var current = function() {
-        return _environment;
-    };
-
-    /**
-     * Returns whether the development environment is in desktop mode
-     *
-     * @method isDesktop
-     *
-     * @return {Boolean} True if is in DESKTOP_ENVIRONMENT
-     */
-    var isDesktop = function() {
-        return (_environment === DESKTOP_ENVIRONMENT) ? true : false;
-    };
-
-    /**
-     * Save in LungoJS.com the use of the service for further ranking
-     *
-     * @method _saveStatsInLungoJS
-     */
-    var _saveStatsInLungoJS = function() {
-        lng.Service.post( 'http://www.lungojs.com/stats/', {
-            name: lng.App.get('name'),
-            version: lng.App.get('version'),
-            icon: lng.App.get('icon')
-        });
-    }
-
-    return {
-        start: start,
-        current: current,
-        isDesktop: isDesktop
-    };
-
-})(LUNGO);
-
-/**
  * Contains all the common functions used in Lungo.
  *
  * @namespace LUNGO
@@ -159,11 +86,9 @@ LUNGO.Environment = (function(lng, undefined) {
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
  */
 
-LUNGO.Core = (function(lng, $, undefined) {
+LUNGO.Core = (function(lng, $$, undefined) {
 
     var ARRAY_PROTO = Array.prototype;
-    var OBJ_PROTO   = Object.prototype;
-    var SUPPORTED_OS = ['ios', 'android', 'blackberry', 'webos'];
 
     /**
      * Console system to display messages when you are in debug mode.
@@ -174,7 +99,7 @@ LUNGO.Core = (function(lng, $, undefined) {
      * @param {string} Message to show in console
      */
     var log = function(severity, message) {
-        if (lng.Environment.isDesktop()) {
+        if (!lng.Core.isMobile()) {
             console[(severity === 1) ? 'log' : (severity === 2) ? 'warn' : 'error'](message);
         } else {
             // @todo : send to the server
@@ -246,7 +171,7 @@ LUNGO.Core = (function(lng, $, undefined) {
      * @return {boolean} indicating whether the object has the specified property.
      */
     var isOwnProperty = function(object, property) {
-        return OBJ_PROTO.hasOwnProperty.call(object, property);
+        return $$.isOwnProperty(object, property);
     };
 
     /**
@@ -256,7 +181,7 @@ LUNGO.Core = (function(lng, $, undefined) {
      * @return {string} with the internal JavaScript [[Class]] of itself.
      */
     var toType = function(obj) {
-        return OBJ_PROTO.toString.call(obj).match(/\s([a-z|A-Z]+)/)[1].toLowerCase();
+        return $$.toType(obj);
     };
 
     /**
@@ -270,18 +195,25 @@ LUNGO.Core = (function(lng, $, undefined) {
     };
 
     /**
+     * Determine if the current environment is a mobile environment
      *
+     * @method isMobile
      *
+     * @return {boolean} true if is mobile environment, false if not.
      */
     var isMobile = function() {
-        var result = false;
+        return $$.isMobile();
+    };
 
-        for (var i = 0, len = SUPPORTED_OS.length; i < len && !result; i++) {
-            var mobile_os = SUPPORTED_OS[i];
-            $.os[mobile_os] && (result = true);
-        }
-
-        return result;
+    /**
+     * Returns information of execute environment
+     *
+     * @method environment
+     *
+     * @return {object} Environment information
+     */
+    var environment = function() {
+        return $$.environment();
     };
 
     return {
@@ -292,77 +224,46 @@ LUNGO.Core = (function(lng, $, undefined) {
         isOwnProperty: isOwnProperty,
         toType: toType,
         toArray: toArray,
-        isMobile: isMobile
+        isMobile: isMobile,
+        environment: environment
     };
 
-})(LUNGO, Zepto);
+})(LUNGO, Quo);
 
 /**
- * Lungo UI events Manager
+ * LungoJS Dom Handler
  *
  * @namespace LUNGO
- * @class Event
- * @requires Zepto
+ * @class Dom
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
  */
 
-LUNGO.Events = (function(lng, undefined) {
-
-    var EVENTS = {
-        mobile: {
-            TOUCH_START: 'touchstart',
-            TOUCH_MOVE: 'touchmove',
-            TOUCH_END: 'touchend',
-            TAP: 'tap',
-            DOUBLE_TAP: 'doubletap',
-            ORIENTATION_CHANGE: 'orientationchange'
-        },
-        desktop: {
-            TOUCH_START: 'click',
-            TOUCH_MOVE: 'mousemove',
-            TOUCH_END: 'mouseup',
-            TAP: 'click',
-            DOUBLE_TAP: 'dblclick',
-            ORIENTATION_CHANGE: 'orientationchange'
-        }
-    };
-
-    var current_environment = lng.Environment.current();
-    var current_events = EVENTS[current_environment];
-
-    /**
-     * Returns the touch event based on an enumeration of LungoJS
-     * and the current environment
+/**
+     * Add an event listener
      *
-     * @method get
+     * @method dom
      *
-     * @param  {string} Touch enumerator of LungoJS
-     * @return {string} Touch event based on the current environment
-     */
-    var get = function(eventName) {
-        return current_events[eventName];
-    };
-
-    return {
-        get: get
-    };
-
-})(LUNGO);
+     * @param  {string} <Markup> element selector
+     * @return {Object} QuoJS <element> instance
+*/
+LUNGO.dom = function(selector) {
+    return $$(selector);
+};
 
 /**
  * External Data & Services Manager
  *
  * @namespace LUNGO
  * @class Service
- * @requires Zepto
+ * @requires QuoJS
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
  */
 
-LUNGO.Service = (function(lng, $, undefined) {
+LUNGO.Service = (function(lng, $$, undefined) {
 
     /**
      * Load data from the server using a HTTP GET request.
@@ -371,19 +272,11 @@ LUNGO.Service = (function(lng, $, undefined) {
      *
      * @param  {string} Containing the URL to which the request is sent
      * @param  {object} A map or string that is sent to the server with the request
-     * @param  {Function} [OPTIONAL] Callback function after the request
+     * @param  {Function} Callback function after the request [OPTIONAL]
+     * @param  {string} Mime-Type: json, xml, html, or text [OPTIONAL]
      */
-    var get = function(url, data, callback) {
-        var parameters = '?';
-        for (var parameter in data) {
-            if (lng.Core.isOwnProperty(data, parameter)) {
-                if (parameters !== '?') parameters += '&';
-                parameters += parameter + '=' + data[parameter];
-            }
-        }
-        url = url + parameters;
-
-        _ajax('GET', url, null, callback);
+    var get = function(url, data, success, dataType) {
+        return $$.get(url, data, success, dataType);
     };
 
     /**
@@ -393,44 +286,40 @@ LUNGO.Service = (function(lng, $, undefined) {
      *
      * @param  {string} Containing the URL to which the request is sent
      * @param  {object} A map or string that is sent to the server with the request
-     * @param  {Function} [OPTIONAL] Callback function after the request
+     * @param  {Function} Callback function after the request [OPTIONAL]
+     * @param  {string} Mime-Type: json, xml, html, or text [OPTIONAL]
      */
-    var post = function(url, data, callback) {
-        _ajax('POST', url, data, callback);
+    var post = function(url, data, success, dataType) {
+        return $$.post(url, data, success, dataType);
     };
 
-    var _ajax = function(type, url, data, callback, error) {
-        $.ajax({
-            type: type,
-            url: url,
-            data: data,
-            dataType: 'json',
-            success: function(response) {
-                if (lng.Core.toType(callback) === 'function') {
-                    setTimeout(callback, 100, response);
-                }
-            },
-            error: function(xhr, type) {
-                if (error) {
-                    setTimeout(error, 100, result);
-                }
-            }
-        });
+    /**
+     * Load data from the server using a HTTP GET request.
+     *
+     * @method json
+     *
+     * @param  {string} Containing the URL to which the request is sent
+     * @param  {object} A map or string that is sent to the server with the request
+     * @param  {Function} [OPTIONAL] Callback function after the request
+     */
+    var json = function(url, data, success) {
+        return $$.json(url, data, success);
     };
 
     return {
         get: get,
-        post: post
+        post: post,
+        json: json,
+        Settings: $$.ajaxSettings
     };
 
-})(LUNGO, Zepto);
+})(LUNGO, Quo);
 
 /**
  * Handles the <sections> and <articles> to show
  *
  * @namespace LUNGO
  * @class Router
- * @requires Zepto
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
@@ -455,8 +344,8 @@ LUNGO.Router = (function(lng, undefined) {
         var target = 'section' + section_id;
 
         if (_existsTarget(target)) {
-            lng.Dom.query(_getHistoryCurrent()).removeClass(CSS_CLASSES.SHOW).addClass(CSS_CLASSES.HIDE);
-            lng.Dom.query(section_id).addClass(CSS_CLASSES.SHOW);
+            lng.dom(_getHistoryCurrent()).removeClass(CSS_CLASSES.SHOW).addClass(CSS_CLASSES.HIDE);
+            lng.dom(section_id).addClass(CSS_CLASSES.SHOW);
 
             lng.Router.History.add(section_id);
         }
@@ -484,16 +373,16 @@ LUNGO.Router = (function(lng, undefined) {
      * @method back
      */
     var back = function() {
-        lng.Dom.query(_getHistoryCurrent()).removeClass(CSS_CLASSES.SHOW);
+        lng.dom(_getHistoryCurrent()).removeClass(CSS_CLASSES.SHOW);
         lng.Router.History.removeLast();
 
-        lng.Dom.query(_getHistoryCurrent()).removeClass(CSS_CLASSES.HIDE).addClass(CSS_CLASSES.SHOW);
+        lng.dom(_getHistoryCurrent()).removeClass(CSS_CLASSES.HIDE).addClass(CSS_CLASSES.SHOW);
     };
 
     var _existsTarget = function(target) {
         var exists = false;
 
-        if ($(target).length > 0) {
+        if (lng.dom(target).length > 0) {
             exists = true;
         } else {
             lng.Core.log(3, 'Lungo.Router ERROR: The target ' + target + ' does not exists.');
@@ -593,7 +482,7 @@ LUNGO.View.Article = (function(lng, undefined) {
         var nav_items = section_id + ' ' + SELECTORS.NAVIGATION_ITEM;
         _disableNavItems(nav_items);
 
-        var current_nav_item = lng.Dom.query(nav_items + '[href="' + article_id + '"]');
+        var current_nav_item = lng.dom(nav_items + '[href="' + article_id + '"]');
         current_nav_item.addClass(CSS_CLASSES.ACTIVE);
         _setTitle(section_id, current_nav_item);
 
@@ -601,13 +490,13 @@ LUNGO.View.Article = (function(lng, undefined) {
     };
 
     var _disableNavItems = function(items) {
-        lng.Dom.query(items).removeClass(CSS_CLASSES.ACTIVE);
+        lng.dom(items).removeClass(CSS_CLASSES.ACTIVE);
     };
 
     var _showContainer = function(section_id, article_id) {
         var section_articles = section_id + ' ' + SELECTORS.ARTICLE;
-        lng.Dom.query(section_articles).removeClass(CSS_CLASSES.ACTIVE);
-        lng.Dom.query(article_id).addClass(CSS_CLASSES.ACTIVE);
+        lng.dom(section_articles).removeClass(CSS_CLASSES.ACTIVE);
+        lng.dom(article_id).addClass(CSS_CLASSES.ACTIVE);
     };
 
     var _setTitle = function(id, item) {
@@ -615,7 +504,7 @@ LUNGO.View.Article = (function(lng, undefined) {
 
         if (title) {
             var section_title = id + ' header .title, ' + id + ' footer .title';
-            lng.Dom.query(section_title).text(title);
+            lng.dom(section_title).text(title);
         }
     };
 
@@ -671,7 +560,7 @@ LUNGO.View.Resize = (function(lng, undefined) {
 
         if (element.length > 0) {
             var reference_dimension = element[reference]();
-            section.children(ARTICLE).css(property, reference_dimension + 'px');
+            section.children(ARTICLE).style(property, reference_dimension + 'px');
         }
     };
 
@@ -682,20 +571,20 @@ LUNGO.View.Resize = (function(lng, undefined) {
      */
     var toolbars = function() {
         var toolbar = '.toolbar nav';
-        var all_toolbars = lng.Dom.query(toolbar);
+        var all_toolbars = lng.dom(toolbar);
 
         for (var i = 0, len = all_toolbars.length; i < len; i++) {
-            var toolbar = lng.Dom.query(all_toolbars[i]);
+            var toolbar = lng.dom(all_toolbars[i]);
             var toolbar_children = toolbar.children();
             var toolbar_children_width = (toolbar.width() / toolbar_children.length);
 
-            toolbar_children.css('width', toolbar_children_width + 'px');
+            toolbar_children.style('width', toolbar_children_width + 'px');
         }
     };
 
     var _resizeScrollContainerWidth = function(container, child) {
         var scroll_width = (container.children().length * child.width());
-        container.css('width', scroll_width + 'px');
+        container.style('width', scroll_width + 'px');
     };
 
     var _resizeScrollContainerHeight = function(scroll, container, child) {
@@ -704,7 +593,7 @@ LUNGO.View.Resize = (function(lng, undefined) {
         var total_rows = Math.ceil(total_children / children_in_scroll_width);
 
         var scroll_height = (total_rows * child.height());
-        container.css('height', scroll_height + 'px');
+        container.style('height', scroll_height + 'px');
     };
 
     return {
@@ -720,7 +609,6 @@ LUNGO.View.Resize = (function(lng, undefined) {
  *
  * @namespace LUNGO.View
  * @class Template
- * @requires Zepto
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
@@ -794,7 +682,6 @@ LUNGO.View.Template = (function(lng, undefined) {
  *
  * @namespace LUNGO.View.Template
  * @class Binding
- * @requires Zepto
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
@@ -872,7 +759,7 @@ LUNGO.View.Template.Binding = (function(lng, undefined) {
     };
 
     var _render = function(container_id, markup) {
-        var container = lng.Dom.query('#' + container_id);
+        var container = lng.dom('#' + container_id);
         container.html(markup);
     };
 
@@ -888,7 +775,6 @@ LUNGO.View.Template.Binding = (function(lng, undefined) {
  *
  * @namespace LUNGO.View.Template
  * @class List
- * @requires Zepto
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
@@ -920,12 +806,12 @@ LUNGO.View.Template.List = (function(lng, undefined) {
 
     var _validateConfig = function() {
         var checked = false;
-        var container_exists = !! lng.Dom.query(_config.container_id);
+        var container_exists = !! lng.dom(_config.container_id);
         var template_exists = lng.View.Template.exists(_config.template_id);
 
         if (container_exists && template_exists) {
             //@ToDo >> Refactor to other method
-            lng.Dom.query("#"+_config.container_id).html('');
+            lng.dom("#"+_config.container_id).html('');
 
             var type = lng.Core.toType(_config.data);
             if (type === 'array' || type === 'object') {
@@ -957,8 +843,8 @@ LUNGO.View.Template.List = (function(lng, undefined) {
     };
 
     var _createScroll = function() {
-        var container_id_for_scroll = lng.Dom.query('#' + _config.container_id).parent().attr('id');
-        var list_config = {snap:'li'};
+        var container_id_for_scroll = lng.dom('#' + _config.container_id).parent().attr('id');
+        var list_config = { snap: 'li' };
 
         lng.View.Scroll.create(container_id_for_scroll, list_config);
     };
@@ -974,7 +860,6 @@ LUNGO.View.Template.List = (function(lng, undefined) {
  *
  * @namespace LUNGO.View
  * @class Scroll
- * @requires Zepto
  * @requires iScroll
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
@@ -998,6 +883,8 @@ LUNGO.View.Scroll = (function(lng, undefined) {
 
     var CACHE_KEY = 'scrolls';
 
+    var HEADER_FOOTER_BLEEDING = 90;
+
     /**
      * Creates a new iScroll element.
      *
@@ -1008,14 +895,16 @@ LUNGO.View.Scroll = (function(lng, undefined) {
      */
     var create = function(id, properties) {
         if (id) {
-            var scroll = lng.Dom.query('#' + id);
-            var scroll_children = scroll.children();
-            var need_scroll = (scroll_children.height() >= scroll.height());
+            var scroll = lng.dom('#' + id);
 
-            if (scroll_children.length > 0 && need_scroll) {
-                properties = _mixProperties(scroll, properties);
-                _saveScrollInCache(id, properties);
-            }
+            //ToDo >> Refactor
+            setTimeout(function() {
+                if (_needScroll(scroll)) {
+                    properties = _mixProperties(scroll, properties);
+                    _saveScrollInCache(id, properties);
+                }
+            }, 100);
+
         } else {
             lng.Core.log(3, 'ERROR: Impossible to create a <scroll> without ID');
         }
@@ -1030,7 +919,7 @@ LUNGO.View.Scroll = (function(lng, undefined) {
      * @param {string} Markup content
      */
     var update = function(id, content) {
-        var scroll = lng.Dom.query('#' + id);
+        var scroll = lng.dom('#' + id);
         var container = scroll.children().first();
 
         if (container.length === 0) {
@@ -1066,6 +955,24 @@ LUNGO.View.Scroll = (function(lng, undefined) {
      */
     var isHorizontal = function(scroll) {
         return (scroll.hasClass(HORIZONTAL_CLASS)) ? true : false;
+    };
+
+    var _needScroll = function(scroll) {
+        var is_necessary = false;
+
+        var element = scroll[0];
+        if (element.clientHeight < element.scrollHeight) {
+            is_necessary = true;
+            var child_height = element.scrollHeight + HEADER_FOOTER_BLEEDING;
+            _resizeChildContainer(element, child_height);
+        }
+
+        return is_necessary;
+    };
+
+    var _resizeChildContainer = function(element, height) {
+        var child_container = lng.dom(element).children().first();
+        child_container.style('height', height + 'px');
     };
 
     var _saveScrollInCache = function(id, properties) {
@@ -1110,7 +1017,7 @@ LUNGO.View.Scroll = (function(lng, undefined) {
  * Initialize the <articles> layout of a certain <section>
  *
  * @namespace LUNGO.View
- * @class Article
+ * @class Aside
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
@@ -1119,226 +1026,69 @@ LUNGO.View.Scroll = (function(lng, undefined) {
 LUNGO.View.Aside = (function(lng, undefined) {
 
     var toggle = function(section_id) {
-        if (_isVisible(section_id)) {
-            _hide(section_id);
-        } else {
-            _show(section_id);
-        }
-    };
-
-    var _show = function(section_id) {
-        lng.Dom.query(section_id + ' aside').addClass('show');
-
-        var articles = lng.Dom.query(section_id + ' article');
+        var articles = lng.dom(section_id + ' article');
         articles.toggleClass('aside');
-    };
-
-    var _hide = function(section_id) {
-        var articles = lng.Dom.query(section_id + ' article');
-        articles.toggleClass('aside');
-    };
-
-    var _isVisible = function(section_id) {
-        var isVisible = lng.Dom.query(section_id + ' aside').hasClass('show');
-
-        return isVisible;
     };
 
     return {
         toggle: toggle
     };
 
-})(LUNGO);/**
- * LungoJS Dom Handler
+})(LUNGO);
+
+/**
+ * Initialize the <articles> layout of a certain <section>
  *
- * @namespace LUNGO
- * @class Dom
+ * @namespace LUNGO.View
+ * @class Element
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
- * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
  */
 
-LUNGO.Dom = (function(lng, $, undefined) {
+LUNGO.View.Element = (function(lng, undefined) {
+
+    var SELECTORS = {
+        BUBBLE: '.bubble.count'
+    };
+    var BINDING_START = '{{';
+    var BINDING_END = '}}';
 
     /**
-     * Add an event listener
+     * Set a counter to the element
      *
-     * @method query
+     * @method count
      *
-     * @param  {string} <Markup> element selector
-     * @return {Object} Zepto <element> instance
+     * @param  {string} Element query selector
+     * @param  {number} Value for counter
      */
-    var query = function(selector) {
-        return $(selector);
+    var count = function(selector, count) {
+        var element = lng.dom(selector);
+
+        if (element ) {
+            if (count > 0) {
+                _setBubble(element, count);
+            } else {
+                element.children(SELECTORS.BUBBLE).remove();
+            }
+        }
+    };
+
+    var _setBubble = function(element, count) {
+        var bubbles = element.children(SELECTORS.BUBBLE);
+        var total_bubbles = bubbles.length;
+
+        if (total_bubbles > 0) {
+            bubbles.html(count);
+        } else {
+            var count_html = LUNGO.Attributes.Data.Count.html;
+            var html_binded = count_html.replace(BINDING_START + 'value' + BINDING_END, count);
+
+            element.append(html_binded);
+        }
     };
 
     return {
-        query: query
-    };
-
-})(LUNGO, Zepto);/**
- * Lungo DOM UI events Manager
- *
- * @namespace LUNGO.Dom
- * @class Event
- * @requires Zepto
- *
- * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
- * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
- */
-
-LUNGO.Dom.Event = (function(lng, undefined) {
-
-    /**
-     * Add an event listener
-     *
-     * @method bind
-     *
-     * @param  {string} Selector that dispatches the event
-     * @param  {string} Touch event name
-     * @param  {Function} Callback function after the request
-     */
-    var bind = function(selector, event_name, callback) {
-        if (_isNotSpecialEvent(selector, event_name, callback)) {
-            lng.Dom.query(selector).bind(lng.Events.get(event_name), callback);
-        }
-    };
-
-    /**
-     * Remove bind event listener
-     *
-     * @method unbind
-     *
-     * @param  {string} Selector that dispatches the event
-     * @param  {string} Touch event name
-     */
-    var unbind = function(selector, event_name) {
-        lng.Dom.query(selector).unbind(lng.Events.get(event_name));
-    };
-
-    /**
-     * Add an event listener that listens to the selector for current and future elements
-     *
-     * @method live
-     *
-     * @param  {string} Selector that dispatches the event
-     * @param  {string} Touch event name
-     * @param  {Function} Callback function after the request
-     */
-    var live = function(selector, event_name, callback) {
-        if (_isNotSpecialEvent(selector, event_name, callback)) {
-            lng.Dom.query(selector).live(lng.Events.get(event_name), callback);
-        }
-    };
-
-    /**
-     * Remove live listener
-     *
-     * @method die
-     *
-     * @param  {string} Selector that dispatches the event
-     * @param  {string} Event name
-     */
-    var die = function(selector, event_name) {
-        lng.Dom.query(selector).die(lng.Events.get(event_name));
-    };
-
-    /**
-     * Add an event listener without event delegation
-     *
-     * @method delegate
-     *
-     * @param  {string} Selector that dispatches the event
-     * @param  {string} Children of selector that dispatches the event
-     * @param  {string} Touch event name
-     * @param  {Function} Callback function after the request
-     */
-    var delegate = function(selector, children_selector, event_name, callback) {
-        if (_isNotSpecialEvent(selector, event_name, callback)) {
-            lng.Dom.query(selector).delegate(children_selector, lng.Events.get(event_name), callback);
-        }
-    };
-
-    /**
-     * Remove delegate event listener
-     *
-     * @method undelegate
-     *
-     * @param  {string} Selector that dispatches the event
-     * @param  {string} Children of selector that dispatches the event
-     */
-    var undelegate = function(selector, children_selector) {
-        lng.Dom.query(selector).undelegate(selector);
-    };
-
-    /**
-     * Listener for DOMelement
-     *
-     * @method listener
-     *
-     * @param  {object} Selector that dispatches the event
-     * @param  {string} Touch event name
-     * @param  {Function} Callback function after the request
-     */
-    var listener = function(selector, event_name, callback) {
-        selector.addEventListener(lng.Events.get(event_name), function(event) {
-            setTimeout(callback, 0, event);
-        }, false);
-    };
-
-    var _isNotSpecialEvent = function(selector, event_name, callback) {
-        var is_special_event = false;
-        /*
-        var SPECIAL_EVENTS = {
-            SWIPE: 'swipe',
-            SWIPE_LEFT: 'swipeLeft',
-            SWIPE_RIGHT: 'swipeRight',
-            SWIPE_UP: 'swipeUp',
-            SWIPE_DOWN: 'swipeDown',
-            DOUBLE_TAP: 'doubleTap'
-        };
-        var special_event = SPECIAL_EVENTS[event_name];
-        lng.Dom.query(selector)[special_event](callback);
-        */
-
-        switch(event_name) {
-            case 'SWIPE':
-                lng.Dom.query(selector).swipe(callback);
-                break;
-            case 'SWIPE_LEFT':
-                lng.Dom.query(selector).swipeLeft(callback);
-                break;
-            case 'SWIPE_RIGHT':
-                lng.Dom.query(selector).swipeRight(callback);
-                break;
-            case 'SWIPE_UP':
-                lng.Dom.query(selector).swipeUp(callback);
-                break;
-            case 'SWIPE_DOWN':
-                lng.Dom.query(selector).swipeDown(callback);
-                break;
-            case 'DOUBLE_TAP':
-                if (lng.Environment.isDesktop()) {
-                    lng.Dom.query(selector).live(lng.Events.get(event_name), callback);
-                } else {
-                    lng.Dom.query(selector).doubleTap(callback);
-                }
-                break;
-            default:
-                is_special_event = true;
-        }
-
-        return is_special_event;
-    };
-
-    return {
-        bind: bind,
-        unbind: unbind,
-        live: live,
-        die: die,
-        delegate: delegate,
-        undelegate: undelegate,
-        listener: listener
+        count: count
     };
 
 })(LUNGO);
@@ -1354,48 +1104,44 @@ LUNGO.Dom.Event = (function(lng, undefined) {
  */
 
 LUNGO.Attributes.Data = {
-     search: {
-         tag: 'search',
-         selector: '.list',
-         html: '<li class="search {{value}}"><input type="search" placeholder="Search..."><a href="#" class="button" data-icon="search"></a></li>'
-     },
-     icon: {
-         tag: 'icon',
-         selector: '*',
-         html: '<span class="icon {{value}}"></span>'
-     },
-     title: {
-         tag: 'title',
-         selector: 'header, footer',
-         html: '<h1 class="title">{{value}}</h1>'
-     },
-     back: {
-         tag: 'back',
-         selector: 'header, footer',
-         html: '<a href="#back" data-target="section" class="back onleft button icon {{value}}"></a>'
-     }
-};    /**
- * Make an analysis of <elements> in a <section>.
- *
- * @namespace LUNGO.Attributes
- * @class Section
- *
- * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
- * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
- */
+    Search: {
+        tag: 'search',
+        selector: '.list',
+        html: '<li class="search {{value}}"><input type="search" placeholder="Search..."><a href="#" class="button" data-icon="search"></a></li>'
+    },
+    Count: {
+        tag: 'count',
+        selector: '*',
+        html: '<span class="bubble count">{{value}}</span>'
+    },
+    Search: {
+        tag: 'search',
+        selector: '*',
+        html: '<input type="search" placeholder="{{value}}"/><a href="#" class="button" data-icon="search"></a>'
+    },
+    Icon: {
+        tag: 'icon',
+        selector: '*',
+        html: '<span class="icon {{value}}"></span>'
+    },
+    Image: {
+        tag: 'image',
+        selector: '*',
+        html: '<img src="{{value}}" class="icon" />'
+    },
+    Title: {
+        tag: 'title',
+        selector: 'header, footer, article',
+        html: '<span class="title">{{value}}</span>'
+    },
+    Back: {
+        tag: 'back',
+        selector: 'header, footer',
+        html: '<a href="#back" data-target="section" class="onleft button"><span class="icon {{value}}"></span></a>'
+    }
+};
 
-LUNGO.Attributes.Section = {
-     header: {
-         name: 'header',
-         reference: 'height',
-         bind: 'top'
-     },
-     footer: {
-         name: 'footer',
-         reference: 'height',
-         bind: 'bottom'
-     }
-};/**
+/**
  * Temporary cache system
  *
  * @namespace LUNGO.Data
@@ -1477,7 +1223,9 @@ LUNGO.Data.Cache = (function(lng, undefined) {
         exists: exists
     };
 
-})(LUNGO);/**
+})(LUNGO);
+
+/**
  * Wrapper for using WebSql (HTML5 feature)
  *
  * @namespace LUNGO.Data
@@ -1533,7 +1281,6 @@ LUNGO.Data.Sql = (function(lng, undefined) {
             for (var i = 0, len = rs.rows.length; i < len; i++) {
                 result.push(rs.rows.item(i));
             }
-			if (result.length === 1) result = result[0];
 
             _callbackResponse(callback, result);
         });
@@ -1545,22 +1292,16 @@ LUNGO.Data.Sql = (function(lng, undefined) {
      * @method insert
      *
      * @param {string} Name of the table in the database
-     * @param {object} Data object to insert in table
+     * @param {object} Object (or Array of objects) to insert in table
      */
-    var insert = function(table, data_obj) {
-        var fields = '';
-        var values = '';
-
-        for (var field in data_obj) {
-            if (lng.Core.isOwnProperty(data_obj, field)) {
-                var value = data_obj[field];
-                fields += (fields) ? ', ' + field : field;
-                if (values) values += ', ';
-                values += (isNaN(value)) ? '"' + value + '"' : value;
+    var insert = function(table, data, callback) {
+        if (lng.Core.toType(data) === 'object') {
+            _insertRow(table, data);
+        } else {
+            for (row in data) {
+                _insertRow(table, data[row]);
             }
         }
-
-        execute('INSERT INTO ' + table + ' (' + fields + ') VALUES (' + values + ')');
     };
 
     /**
@@ -1573,7 +1314,7 @@ LUNGO.Data.Sql = (function(lng, undefined) {
      * @param {object} Data object to update in table
      * @param {object} [OPTIONAL] Object selection condition
      */
-    var update = function(table, data_obj, where_obj) {
+    var update = function(table, data_obj, where_obj, callback) {
         var sql = 'UPDATE ' + table + ' SET ' + _convertToSql(data_obj, ',');
         if (where_obj) sql += ' WHERE ' + _convertToSql(where_obj, 'AND');
 
@@ -1588,7 +1329,7 @@ LUNGO.Data.Sql = (function(lng, undefined) {
      * @param {string} Name of the table in the database
      * @param {object} [OPTIONAL] Object selection condition
      */
-    var drop = function(table, where_obj) {
+    var drop = function(table, where_obj, callback) {
         var where = (where_obj) ? ' WHERE ' + _convertToSql(where_obj, 'AND') : '';
 
         execute('DELETE FROM ' + table + where + ';');
@@ -1667,6 +1408,22 @@ LUNGO.Data.Sql = (function(lng, undefined) {
         }
     };
 
+    var _insertRow = function(table, row) {
+        var fields = '';
+        var values = '';
+
+        for (var field in row) {
+            if (lng.Core.isOwnProperty(row, field)) {
+                var value = row[field];
+                fields += (fields) ? ', ' + field : field;
+                if (values) values += ', ';
+                values += (isNaN(value)) ? '"' + value + '"' : value;
+            }
+        }
+
+        execute('INSERT INTO ' + table + ' (' + fields + ') VALUES (' + values + ')');
+    }
+
     var _throwError = function(transaction, error) {
         lng.Core.log(3, 'lng.Data.Sql >> ' + error.code + ': ' + error.message);
     };
@@ -1698,7 +1455,9 @@ LUNGO.Data.Storage = (function(lng, undefined) {
 
     };
 
-})(LUNGO);/**
+})(LUNGO);
+
+/**
  * Boot for a new LungoJS Application instance
  *
  * @namespace LUNGO
@@ -1711,16 +1470,59 @@ LUNGO.Data.Storage = (function(lng, undefined) {
 LUNGO.Boot = (function(lng, undefined) {
 
     return function() {
-        lng.Environment.start();
-
         lng.Boot.Layout.start();
         lng.Boot.Events.start();
         lng.Boot.Data.start();
         lng.Boot.Section.start();
         lng.Boot.Article.start();
+        lng.Boot.Stats.start();
     };
 
-})(LUNGO);/**
+})(LUNGO);
+
+/**
+ * Save in LungoJS.com the use of the service for further ranking
+ *
+ * @namespace LUNGO.Boot
+ * @class Stats
+ *
+ * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
+ * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
+ */
+
+LUNGO.Boot.Stats = (function(lng, undefined) {
+
+    /**
+     * Analizing if it's run in Mobile Phone and changing the type of event to subscribe.
+     *
+     * @method start
+     */
+    var start = function() {
+        if (lng.Core.isMobile()) {
+            _saveStats();
+        }
+    };
+
+    /**
+     * Save in LungoJS.com the use of the service for further ranking
+     *
+     * @method _saveStatsInLungoJS
+     */
+    var _saveStats = function() {
+        lng.Service.post( 'http://www.lungojs.com/stats/', {
+            name: lng.App.get('name'),
+            version: lng.App.get('version'),
+            icon: lng.App.get('icon')
+        }, function(response) {});
+    };
+
+    return {
+        start: start
+    };
+
+})(LUNGO);
+
+/**
  * Initialize the Layout of LungoJS (if it's a mobile environment)
  *
  * @namespace LUNGO.Boot
@@ -1741,7 +1543,7 @@ LUNGO.Boot.Layout = (function(lng, undefined) {
      *
      */
     var start = function() {
-        if (!lng.Environment.isDesktop()) {
+        if (lng.Core.isMobile()) {
             _window = window;
             _document = _window.document;
 
@@ -1753,7 +1555,7 @@ LUNGO.Boot.Layout = (function(lng, undefined) {
         if (_window.innerHeight == 356) {
             var _height = 416;
 
-            lng.Dom.query('body').css('height', _height + 'px');
+            lng.dom('body').style('height', _height + 'px');
             _hideNavigationBar();
         }
     };
@@ -1791,7 +1593,6 @@ LUNGO.Boot.Layout = (function(lng, undefined) {
  *
  * @namespace LUNGO.Boot
  * @class Article
- * @requires Zepto
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
@@ -1801,7 +1602,7 @@ LUNGO.Boot.Article = (function(lng, undefined) {
 
     var SELECTORS = {
         LIST_IN_ARTICLE: 'article.list',
-        SCROLL_IN_ARTICLE: 'scroll',
+        SCROLL_IN_ARTICLE: '.scrollable',
         CHECKBOX_IN_ARTICLE: '.checkbox, .radio'
     };
 
@@ -1817,10 +1618,10 @@ LUNGO.Boot.Article = (function(lng, undefined) {
     };
 
     var _initElement = function(selector, callback) {
-        var found_elements = lng.Dom.query(selector);
+        var found_elements = lng.dom(selector);
 
         for (var i = 0, len = found_elements.length; i < len; i++) {
-            var element = lng.Dom.query(found_elements[i]);
+            var element = lng.dom(found_elements[i]);
             lng.Core.execute(callback, element);
         }
     };
@@ -1853,7 +1654,6 @@ LUNGO.Boot.Article = (function(lng, undefined) {
  *
  * @namespace LUNGO.Boot
  * @class Data
- * @requires Zepto
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
@@ -1879,10 +1679,10 @@ LUNGO.Boot.Data = (function(lng, undefined) {
     };
 
     var _findElements = function(attribute) {
-        var elements = lng.Dom.query(attribute.selector);
+        var elements = lng.dom(attribute.selector);
 
         for (var i = 0, len = elements.length; i < len; i++) {
-            var element = lng.Dom.query(elements[i]);
+            var element = lng.dom(elements[i]);
             lng.View.Template.Binding.dataAttribute(element, attribute);
         }
     };
@@ -1912,20 +1712,19 @@ LUNGO.Boot.Events = (function(lng, undefined) {
      *
      */
     var start = function() {
-        var touch_move_event  = 'TOUCH_MOVE';
-        var touch_start_event = 'TOUCH_START';
-        var orientation_change = 'ORIENTATION_CHANGE';
+        var touch_move_event  = 'touchmove';
+        var orientation_change = 'orientationchange';
         var target_selector = 'a[href][data-target]';
-        var target_selector_from_aside = 'ASIDE a[href][data-target]';
+        var target_selector_from_aside = 'aside a[href][data-target]';
 
-        lng.Dom.Event.listener(document, touch_move_event, _iScroll);
-        lng.Dom.Event.listener(window, orientation_change, _changeOrientation);
-        lng.Dom.Event.live(target_selector_from_aside, touch_start_event, _toggleAside);
-        lng.Dom.Event.live(target_selector, touch_start_event, _loadTarget);
+        lng.dom(document).on(touch_move_event, _iScroll);
+        lng.dom(window).on(orientation_change, _changeOrientation);
+        lng.dom(target_selector_from_aside).tap(_toggleAside);
+        lng.dom(target_selector).tap(_loadTarget);
     };
 
-    var _iScroll = function(event_handler) {
-        event_handler.preventDefault();
+    var _iScroll = function(event) {
+        event.preventDefault();
     };
 
     var _changeOrientation = function(event) {
@@ -1933,19 +1732,18 @@ LUNGO.Boot.Events = (function(lng, undefined) {
     };
 
     var _toggleAside = function(event) {
-        event.preventDefault();
-
-        var link = lng.Dom.query(this);
+        var link = lng.dom(this);
         var section_id =  _getParentIdOfElement(link);
-
         lng.View.Aside.toggle(section_id);
+
+        event.preventDefault();
     };
 
     var _loadTarget = function(event) {
-        event.preventDefault();
-
-        var link = lng.Dom.query(this);
+        var link = lng.dom(this);
         _selectTarget(link);
+
+        event.preventDefault();
     };
 
     var _selectTarget = function(link) {
@@ -1988,7 +1786,7 @@ LUNGO.Boot.Events = (function(lng, undefined) {
     };
 
     var _getParentIdOfElement = function(element) {
-        var parent_id = '#' + element.parents('section').attr('id');
+        var parent_id = '#' + element.parent('section').attr('id');
         return parent_id;
     };
 
@@ -2003,7 +1801,6 @@ LUNGO.Boot.Events = (function(lng, undefined) {
  *
  * @namespace LUNGO.Boot
  * @class Section
- * @requires Zepto
  *
  * @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
  * @author Guillermo Pascual <pasku@tapquo.com> || @pasku1
@@ -2024,14 +1821,13 @@ LUNGO.Boot.Section = (function(lng, undefined) {
      * @method init
      */
     var start = function() {
-        var sections = lng.Dom.query(SELECTORS.SECTION);
-        var easing_transition = '-webkit-transform 0.3s ease-in-out';
+        var sections = lng.dom(SELECTORS.SECTION);
 
         _initFirstSection(sections);
         _initAllSections(sections);
+        _initAllAsides();
 
         lng.View.Resize.toolbars();
-        _allocateEasingTransition(sections, easing_transition);
     };
 
     var _initFirstSection = function(sections) {
@@ -2039,37 +1835,36 @@ LUNGO.Boot.Section = (function(lng, undefined) {
         var first_section_id = '#' + first_section.attr('id');
 
         first_section.addClass(ACTIVE_CLASS);
-
         lng.Router.History.add(first_section_id);
     };
 
     var _initAllSections = function(sections) {
+
+        if (lng.Core.isMobile()) {
+            _setPositionFixedInIOS5(sections);
+        }
+
         for (var i = 0, len = sections.length; i < len; i++) {
-            var section = lng.Dom.query(sections[i]);
-            _initSection(section);
+            var section = lng.dom(sections[i]);
             _initFirstArticle(section);
         }
-    };
-
-    var _initSection = function(section) {
-        var section_attributes = lng.Attributes.Section;
-
-        for (var attribute in section_attributes) {
-            if (lng.Core.isOwnProperty(section_attributes, attribute)) {
-                var property = section_attributes[attribute];
-                lng.View.Resize.article(section, property.name, property.bind, property.reference);
-            }
-        }
-    };
-
-    var _allocateEasingTransition = function(sections, easing) {
-        var transition_property = { '-webkit-transition': easing };
-        sections.css(transition_property);
     };
 
     var _initFirstArticle = function(section) {
         section.children(SELECTORS.ARTICLE).first().addClass(ACTIVE_CLASS);
     };
+
+    var _initAllAsides = function() {
+        lng.dom('aside').addClass('show');
+    };
+
+    var _setPositionFixedInIOS5 = function(sections) {
+        var environment = lng.Core.environment();
+
+        if (environment.os.name === 'ios' && environment.os.version >= '5.') {
+            sections.style('position', 'fixed');
+        }
+    }
 
     return {
         start: start
