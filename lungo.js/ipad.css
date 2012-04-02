@@ -12,14 +12,19 @@ div
     padding: 10px;
 }
 
+#datosCircuito
+{
+    align:center;
+    /*width:750px;*/
+    padding-left: 10px;
+    width:90%;
+}
+
 #div_about
 {
     align:center;
-    
-    /*width:80%;*/
     width:450px;
     padding-left: 140px;
-    
 }
 
 #imgespana
@@ -28,14 +33,34 @@ div
     height:350px;
 }
 
-#imgFirst
+a.button.big{position:relative;height:30px;width:55%;margin-bottom:4px;padding:6px 0;font-size:16px;line-height:31px;}
+
+.bubble
 {
-    width:256px;
-    height:256px;
-    
+    width:3%;
 }
 
-a.button.big{position:relative;height:30px;width:55%;margin-bottom:4px;padding:6px 0;font-size:16px;line-height:31px;}
+.anchor
+{   
+    height:20px;    
+}
+#cellInfo
+{
+    text-align:center;
+    padding-top: 0px;
+    padding-left: 120px;
+}
+
+#artReglamento
+{
+    text-align: justify;
+    width:97%;
+}
+
+#artPilotos
+{
+  /*height:100%;*/
+}
 
 @media only screen and (orientation:portrait)
 {
@@ -54,14 +79,18 @@ a.button.big{position:relative;height:30px;width:55%;margin-bottom:4px;padding:6
 
 	a.button.big{position:relative;height:30px;width:60%;margin-bottom:4px;padding:6px 0;font-size:16px;line-height:31px;}
     
+    #datosCircuito
+    {
+        align:center;
+        padding-left: 10px;
+        width:90%;
+    }
     
     #div_about
     {
         align:center;
         width:750px;
         padding-left: 10px;
-        /*width:80%;*/
-        
     }
     
     #imgespana
@@ -70,11 +99,34 @@ a.button.big{position:relative;height:30px;width:55%;margin-bottom:4px;padding:6
         height:263px;
     }
 
-    #imgFirst
+    .bubble
     {
-    width:256px;
-    height:256px;
-    
+        width:4%;
     }
 
+    /* ARIBA DERECHA ABAJO IZQUIERDA*/
+
+    .anchor
+    {
+        
+        height:20px;
+        
+    }
+    #cellInfo
+    {
+        text-align:center;
+        padding-top: 0px;
+        padding-left: 120px;
+    }
+
+    #artReglamento
+    {
+        text-align: justify;
+        width:97%;
+    }
+
+    #artPilotos
+    {
+        /*height:100%;*/
+    }
 }
