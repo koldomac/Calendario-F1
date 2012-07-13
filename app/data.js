@@ -1,4 +1,4 @@
-App.Data = (function(lng, app, undefined) {
+App.Data = (function(lng, App, undefined) {
 
     return {
 
