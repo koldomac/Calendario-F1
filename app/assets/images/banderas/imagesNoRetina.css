@@ -1,0 +1,30 @@
+.imgBanderaAustralia{ 	background-image:url('../../assets/images/banderas/Australia.png'); 	}
+.imgBanderaMalasia	{	background-image:url('../../assets/images/banderas/Malasia.png');		}
+.imgBanderaChina	{	background-image:url('../../assets/images/banderas/China.png');		}
+.imgBanderaBahrein	{	background-image:url('../../assets/images/banderas/Bahrein.png');		}
+.imgBanderaSpain	{	background-image:url('Spain.png');	}
+.imgBanderaMonaco	{	background-image:url('../../assets/images/banderas/Monaco.png');		}
+.imgBanderaCanada	{	background-image:url('../../assets/images/banderas/Canada.png');		}
+.imgBanderaUSA 		{	background-image:url('../../assets/images/banderas/USA.png');			}
+.imgBanderaUK		{	background-image:url('../../assets/images/banderas/UK.png');			}
+.imgBanderaGermany	{	background-image:url('../../assets/images/banderas/Germany.png');		}
+.imgBanderaHungary	{	background-image:url('../../assets/images/banderas/Hungary.png');		}
+.imgBanderaBelgium	{	background-image:url('../../assets/images/banderas/Belgium.png');		}
+.imgBanderaItaly	{	background-image:url('../../assets/images/banderas/Italy.png');		}
+.imgBanderaSingapore{	background-image:url('../../assets/images/banderas/Singapore.png');	}
+.imgBanderaKorea	{	background-image:url('../../assets/images/banderas/Korea.png');		}
+.imgBanderaJapan	{	background-image:url('../../assets/images/banderas/Japan.png');		}
+.imgBanderaIndia	{	background-image:url('../../assets/images/banderas/India.png');		}
+.imgBanderaAbu_Dhabi{	background-image:url('../../assets/images/banderas/Abu_Dhabi.png');	}
+.imgBanderaBrazil	{	background-image:url('../../assets/images/banderas/Brazil.png');		}
+.imgBanderaSize
+{
+	-moz-background-size: auto 100%;
+  	-webkit-background-size: auto 100%;
+	-o-background-size: auto 100%;
+  	background-size: auto 100%;
+	background-repeat:no-repeat;
+	background-position:left;
+	max-width:100%;  
+	padding-left: 40px;
+}
