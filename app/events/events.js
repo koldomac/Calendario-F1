@@ -1,4 +1,5 @@
-Lungo.ready (function() {    
+Lungo.ready (function() {
+    
     Lungo.dom('#secAustralia').on('load', function(event){Lungo.dom('#divCircuitoDatos').addClass('animated bounce');});
     Lungo.dom('#secMalasia').on('load', function(event){Lungo.dom('#divCircuitoDatos').addClass('animated bounce');});
     Lungo.dom('#secChina').on('load', function(event){Lungo.dom('#divCircuitoDatos').addClass('animated bounce');});

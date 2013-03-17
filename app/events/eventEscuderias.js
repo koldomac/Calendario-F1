@@ -6,6 +6,7 @@ Lungo.dom('#liEscuderias').tap(function(event) {
     else {
         Lungo.Notification.show("Obteniendo clasificación de escuderías", "", "cloud", true, 0, null);
     }
+    
     var url = "http://localhost/MAMP/CalendarioF1_escuderias.php";
         
     Lungo.Service.cache(url, {}, "6 hours", function(response) {

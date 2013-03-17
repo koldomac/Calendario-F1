@@ -196,6 +196,8 @@ function toSpanish() {
     /*============================= ABOUT ============================= */
     Lungo.dom('#aboutMail').text('Mail');
     Lungo.dom('#aboutTwitter').text('... si quieres: Sígueme!');
+    Lungo.dom('#strongGitHub').text('Proyecto');
+    Lungo.dom('#smallGitHub').text('Liciencia GPLv3');
 };
 
 function toEnglish() {
@@ -378,4 +380,6 @@ function toEnglish() {
     /*============================= ABOUT ============================= */
     Lungo.dom('#aboutMail').text('Contact me');
     Lungo.dom('#aboutTwitter').text('... if you want: Follow me!');
+    Lungo.dom('#strongGitHub').text('Project');
+    Lungo.dom('#smallGitHub').text('GPLv3 license');
 };

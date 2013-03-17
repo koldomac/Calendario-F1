@@ -6,6 +6,7 @@ Lungo.dom('#liPilotos').tap(function(event) {
     else {
         Lungo.Notification.show("Obteniendo clasificación de pilotos", "", "cloud", true, 0, null);
     }    
+    
     var url = "http://localhost/MAMP/CalendarioF1_pilotos.php";
 
     Lungo.Service.cache(url, {}, "6 hours", function(response) {

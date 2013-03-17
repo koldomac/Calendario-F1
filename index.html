@@ -21,8 +21,6 @@
     <link rel="stylesheet" href="app/assets/stylesheets/more_icons.css">
     <!-- Animate CSS -->
     <link rel="stylesheet" href="app/assets/stylesheets/animate.min.css">
-    <!-- MAP -->
-    <link rel='stylesheet' href="http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css">
 </head>
 <body class="app">
     <section id="main" data-transition="slide">
@@ -70,7 +68,7 @@
             <div class="centered title with-subtitle">Calendario F1<small class="subtitle">2013</small></div>
         </div>
     </header>
-    <article><div id="map"></div>
+    <article id="artMap">
     </article>
     </section>
     <!-- CAJON -->
@@ -212,6 +210,18 @@
                         <p id="aboutTwitter"></p>
                     </a>
                 </li>
+                <li class="selectable" data-image="app/assets/images/icon-114.png">
+                    <a href="http://lungo.tapquo.com" target="_blank">
+                        <strong>Lungo</strong>
+                        <p>HTML5 Cross-Device Framework</p>
+                    </a>
+                </li>
+                <li class="selectable" data-icon="brand github">
+                    <a href="https://github.com/koldomac/Calendario-F1" target="_blank">
+                        <strong id="strongGitHub"></strong>
+                        <p id="smallGitHub"></p>
+                    </a>
+                </li>
             </ul>
         </article>
     </section>
@@ -274,13 +284,13 @@
             <ul style="font-size: 1.2em;">
                 <li>&nbsp;</li>
                 <li class="selectable" style="height:40px;">
-                    <a href="mailto:?subject=App%20CalendarioF1&body=App%20%3Cb%3ECalendarioF1%3C%2Fb%3E%3Cbr%2F%3E%0A%0A%0A%3Ca%20href%3D%22https%3A%2F%2Fitunes.apple.com%2Fes%2Fapp%2Fcalendario-f1%2Fid488061697%3Fmt%3D8%22%3EApp%20Store%3C%2Fa%3E%3Cbr%2F%3E%0A%3Ca%20href%3D%22https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.koldomac.CalendarioF1%22%3EGoogle%20Play%3C%2Fa%3E%3Cbr%2F%3E" data-icon="icon-email"></a>
+                    <a href="mailto:?subject=App%20CalendarioF1&body=App%20%3Cb%3ECalendarioF1%3C%2Fb%3E%3Cbr%2F%3E%0A%0A%0A%3Ca%20href%3D%22https%3A%2F%2Fitunes.apple.com%2Fes%2Fapp%2Fcalendario-f1%2Fid616572552%3Fmt%3D8%22%3EApp%20Store%3C%2Fa%3E%3Cbr%2F%3E%0A%3Ca%20href%3D%22https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.koldomac.Calendario_F1%22%3EGoogle%20Play%3C%2Fa%3E%3Cbr%2F%3E" data-icon="icon-email"></a>
                 </li>
                 <li class="selectable" style="height:40px;">
-                    <a href="https://twitter.com/intent/tweet?text=%23App%20%23CalendarioF1%20https://itunes.apple.com/es/app/calendario-f1/id488061697?mt=8%20%23iOS%20https://play.google.com/store/apps/details?id=com.koldomac.CalendarioF1%20%23Android" data-icon="icon-twitter" target="_blank" ></a>
+                    <a href="https://twitter.com/intent/tweet?text=%23App%20%23CalendarioF1%20https://itunes.apple.com/es/app/calendario-f1/id616572552?mt=8%20%23iOS%20https://play.google.com/store/apps/details?id=com.koldomac.Calendario_F1%20%23Android" data-icon="icon-twitter" target="_blank" ></a>
                 </li>
                 <li class="selectable" style="height:40px;">
-                    <a target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Ffb-share-control.com%2F%3Ft%3DApp%2520Calendario%2520F1%26d%3D%26u%3Dhttps%253A%252F%252Fitunes.apple.com%252Fes%252Fapp%252Fcalendario-f1%252Fid488061697%253Fmt%253D8%26i%3Dhttps%253A%252F%252Fdl.dropbox.com%252Fu%252F185610%252FCalendarioF1.png" data-icon="icon-facebook"></a>
+                    <a target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Ffb-share-control.com%2F%3Ft%3DApp%2520Calendario%2520F1%26d%3D%26u%3Dhttps%253A%252F%252Fitunes.apple.com%252Fes%252Fapp%252Fcalendario-f1%252Fid616572552%253Fmt%253D8%26i%3Dhttps%253A%252F%252Fdl.dropbox.com%252Fu%252F185610%252FCalendarioF1.png" data-icon="icon-facebook"></a>
                 </li>
             </ul>
         </article>
@@ -289,7 +299,10 @@
     <script src="components/quojs/quo.js"></script>
     <script src="components/lungo/lungo.js"></script>
     <!-- MAP -->
-    <script src="http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js"></script>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgz15Dc5mZIS6am-ZAK4klWjusT2JrnHk&sensor=false"></script>
+    
+    <!--<script src="http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js"></script>-->
     <!-- MUSTACHE -->
     <script src="components/mustache/mustache.js"></script>
     <!-- MY COMUN EVENTS -->    
